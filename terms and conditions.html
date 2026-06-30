@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — VShip Document Upload App</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0d2250;
+    --blue:    #1a45a8;
+    --gold:    #f5a800;
+    --gold-lt: #ffc93c;
+    --white:   #ffffff;
+    --off:     #f4f6fb;
+    --text:    #1c2540;
+    --muted:   #5a6480;
+    --border:  #dde3f0;
+    --shadow:  0 4px 24px rgba(13,34,80,.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--white); }
+
+  /* ── TOP BANNER ─────────────────────────────── */
+  .top-banner {
+    background: var(--navy); color: rgba(255,255,255,.75);
+    font-size: .78rem; letter-spacing: .04em;
+    text-align: center; padding: .45rem 1rem;
+  }
+  .top-banner a { color: var(--gold); text-decoration: none; }
+  .top-banner a:hover { text-decoration: underline; }
+
+  /* ── HEADER ─────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    border-bottom: 3px solid var(--gold);
+    box-shadow: var(--shadow);
+  }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: .6rem 2rem; gap: 1rem;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: .9rem; text-decoration: none; }
+  .logo-wrap img { height: 58px; width: auto; }
+  .logo-text { line-height: 1.1; }
+  .logo-text .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem; font-weight: 800; color: var(--navy); letter-spacing: .02em;
+  }
+  .logo-text .tagline {
+    font-size: .7rem; color: var(--muted);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
+  }
+
+  nav ul { list-style: none; display: flex; gap: .15rem; align-items: center; }
+  nav a {
+    display: block; padding: .5rem .85rem;
+    font-size: .84rem; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--navy); border-radius: 4px;
+    transition: background .18s, color .18s;
+  }
+  nav a:hover { background: var(--off); color: var(--blue); }
+  nav .cta-btn { background: var(--gold); color: var(--navy); border-radius: 4px; padding: .5rem 1.1rem; }
+  nav .cta-btn:hover { background: var(--gold-lt); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .4rem; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: .25s; }
+  #nav-toggle { display: none; }
+
+  /* ── CONTENT PAGE ────────────────────────────── */
+  .doc-hero {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    border-bottom: 3px solid var(--gold);
+  }
+  .doc-hero-inner { max-width: 860px; margin: 0 auto; }
+  .doc-hero .eyebrow {
+    font-size: .7rem; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: .6rem;
+  }
+  .doc-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800; color: var(--white); line-height: 1.1;
+  }
+  .doc-hero .doc-meta {
+    margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.5);
+  }
+
+  .doc-body {
+    max-width: 860px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .doc-body > p:first-child { margin-top: 0; }
+
+  .doc-body h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    letter-spacing: .04em; margin-top: 2.5rem; margin-bottom: .6rem;
+    border-bottom: 2px solid var(--gold); padding-bottom: .35rem;
+  }
+  .doc-body h3 {
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-top: 1.5rem; margin-bottom: .4rem; letter-spacing: .02em;
+  }
+  .doc-body p {
+    font-size: .9rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: .9rem;
+  }
+  .doc-body ul {
+    margin: .5rem 0 1rem 1.4rem;
+  }
+  .doc-body li {
+    font-size: .9rem; color: var(--muted); line-height: 1.7;
+    margin-bottom: .4rem;
+  }
+  .doc-body a { color: var(--blue); }
+  .doc-body a:hover { color: var(--gold); }
+  .doc-body strong { color: var(--text); }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer { background: var(--navy); color: rgba(255,255,255,.65); }
+  .footer-main {
+    max-width: 1280px; margin: 0 auto;
+    padding: 3.5rem 2rem 2.5rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem;
+  }
+  .footer-brand img { height: 50px; margin-bottom: .9rem; }
+  .footer-brand p {
+    font-family: 'Source Serif 4', serif; font-weight: 300;
+    font-size: .83rem; line-height: 1.7; max-width: 280px;
+    color: rgba(255,255,255,.5);
+  }
+  .footer-brand .fmc-note {
+    margin-top: .9rem; font-size: .72rem;
+    color: var(--gold); letter-spacing: .06em; font-family: 'Barlow', sans-serif;
+  }
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .9rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: .9rem; border-bottom: 1px solid rgba(255,255,255,.1);
+    padding-bottom: .4rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: .4rem; }
+  .footer-col a { font-size: .82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    max-width: 1280px; margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: .8rem;
+  }
+  .footer-bottom p { font-size: .75rem; }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a {
+    font-size: .75rem; color: rgba(255,255,255,.4);
+    text-decoration: none; transition: color .15s;
+  }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* ── MODAL ───────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(13,34,80,.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white); border-radius: 8px;
+    max-width: 740px; width: 100%; max-height: 85vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  }
+  .modal-head {
+    background: var(--navy); color: var(--white);
+    padding: 1.1rem 1.5rem; border-radius: 8px 8px 0 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem; font-weight: 700; letter-spacing: .05em;
+  }
+  .modal-close {
+    background: none; border: none; color: var(--white);
+    font-size: 1.4rem; cursor: pointer; line-height: 1; padding: .2rem .4rem;
+  }
+  .modal-body { overflow-y: auto; padding: 1.5rem 2rem; }
+  .modal-body p, .modal-body li {
+    font-size: .85rem; color: var(--muted); line-height: 1.75;
+  }
+  .modal-body h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem;
+    font-weight: 700; color: var(--navy); text-transform: uppercase;
+    letter-spacing: .06em; margin: 1.2rem 0 .4rem;
+    border-bottom: 1px solid var(--border); padding-bottom: .3rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 960px) {
+    .footer-main { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    nav ul { display: none; flex-direction: column; width: 100%; }
+    #nav-toggle:checked ~ ul { display: flex; }
+    .hamburger { display: flex; }
+    .header-inner { flex-wrap: wrap; }
+    nav { width: 100%; order: 3; }
+    nav ul { background: var(--white); border-top: 1px solid var(--border); padding: .5rem 0; }
+    nav a { padding: .6rem 1.2rem; }
+    .footer-main { grid-template-columns: 1fr; }
+    .doc-body { padding: 2rem 1.2rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  FMC Licensed NVOCC · OTI Bonded Carrier &nbsp;|&nbsp; Used Automobile Export Specialists to West Africa &nbsp;|&nbsp;
+  <a href="https://www.fmc.gov/" target="_blank">Regulated by the U.S. Federal Maritime Commission</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="./index.html" class="logo-wrap">
+      <img src="./logoIG.svg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="VShip Logo" style="display: flex;">
+      <div class="logo-text">
+        <div class="brand">VSHIP CO</div>
+        <div class="tagline">International Ocean Freight</div>
+      </div>
+    </a>
+    <nav>
+      <label for="nav-toggle" class="hamburger">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="nav-toggle">
+      <ul>
+        <li><a href="./index.html#services">Services</a></li>
+        <li><a href="./index.html#carriers">Carriers</a></li>
+        <li><a href="./index.html#destinations">Destinations</a></li>
+        <li><a href="./index.html#bol">Bill of Lading</a></li>
+        <li><a href="./index.html#regulations">Regulations</a></li>
+        <li><a href="./index.html#contact" class="cta-btn">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="doc-hero">
+  <div class="doc-hero-inner">
+    <p class="eyebrow">VShip Documents Upload App</p>
+    <h1>Terms of Service</h1>
+    <p class="doc-meta">Last updated: June 10, 2026 · Version 1.0</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="doc-body">
+<p>These Terms of Service (“Terms”), together with the Privacy Policy incorporated herein by reference, set forth the complete and binding agreement governing access to and use of the VShip Document Upload application, including all software, documentation, features, and related services (collectively, the “Service”) made available by VShip, Inc., a New York corporation with its principal place of business at 3636 33rd Street, Astoria, NY 11106, United States (“VShip” or “Company”).</p>
+<p>By accessing, downloading, or using the Service, You acknowledge that You have read, understood, and agree to be legally bound by all provisions of these Terms. If You are accepting these Terms on behalf of a company or other legal entity, You represent that You have full authority to bind that entity. If You do not agree, You must immediately cease all access and use.</p>
+
+<h2>Section 1 — Definitions and Interpretation</h2>
+<p>As used herein, the following capitalized terms shall have the meanings set forth below. Definitions apply equally in the singular and plural.</p>
+<ul>
+  <li><strong>“Affiliates”</strong> means any entity directly or indirectly controlling, controlled by, or under common control with a party, where “control” means ownership of fifty percent (50%) or more of the voting interests.</li>
+  <li><strong>“Authorized User”</strong> means an individual who is at least eighteen (18) years of age, authorized by You to access the Service on Your behalf, and who has been granted valid Credentials.</li>
+  <li><strong>“Communication”</strong> means any instruction, request, transmission, notice, or other message received by Company from or through Your account via the Service, whether submitted directly or through an interface, API, or automated means.</li>
+  <li><strong>“Company Technology”</strong> means the Service and all software, source code, object code, algorithms, interfaces, designs, logos, trademarks, service marks, trade dress, documentation, and all updates, improvements, modifications, and derivative works thereof, owned by or licensed to Company.</li>
+  <li><strong>“Credentials”</strong> means login details, passwords, access keys, authentication tokens, or other security identifiers issued by or created by You to access the Service.</li>
+  <li><strong>“Documents”</strong> means any export, shipping, or trade documents, including but not limited to vehicle titles, bills of sale, export powers of attorney, customs declarations, and commercial invoices, that You upload or transmit through the Service.</li>
+  <li><strong>“Feedback”</strong> means any suggestions, ideas, enhancement requests, bug reports, recommendations, or other input You provide to Company concerning the Service.</li>
+  <li><strong>“Intellectual Property Rights”</strong> means all copyrights, database rights, patents, patent applications, trademarks, service marks, design rights, trade secrets, know-how, moral rights, rights of publicity, and all similar rights, whether registered or unregistered, in any jurisdiction worldwide, together with all renewals, extensions, and derivative works thereof.</li>
+  <li><strong>“Personal Information”</strong> has the meaning given in the Privacy Policy.</li>
+  <li><strong>“Services”</strong> means the document upload, processing, conversion, assembly, storage, and delivery functions provided by Company through the Service.</li>
+  <li><strong>“You” or “User”</strong> means the individual or entity using the Service, whether on its own behalf or on behalf of another person or entity, and includes all Authorized Users acting under Your Credentials.</li>
+  <li><strong>“Your Content”</strong> means any Documents and other materials You upload, transmit, or store through the Service.</li>
+</ul>
+
+<h2>Section 2 — Scope of Service and Eligibility</h2>
+<h3>2.1 Service Description</h3>
+<p>The Service enables You to capture, upload, process, assemble, store, and transmit Documents to designated recipients. Company reserves the right, in its sole discretion and without liability to You, to modify, suspend, discontinue, or alter any feature or functionality of the Service at any time and for any reason, without prior notice.</p>
+<h3>2.2 Eligibility</h3>
+<p>The Service is available only to: (a) individuals who are at least eighteen (18) years of age; and (b) persons acting in a business or professional capacity. By using the Service, You represent and warrant that You satisfy all eligibility requirements, that all information You provide is accurate, current, and complete, and that You are solely responsible for ensuring Your use complies with all applicable laws and regulations.</p>
+<h3>2.3 No Warranty of Availability</h3>
+<p>Company makes no representation or warranty that the Service will be available without interruption or error, that defects will be corrected, or that the Service or its servers are free of harmful components. Access may be suspended or terminated at any time without prior notice.</p>
+
+<h2>Section 3 — Account Security and Credentials</h2>
+<h3>3.1 Responsibility for Credentials</h3>
+<p>You are responsible for maintaining the strict confidentiality of all Credentials and for all activity conducted under Your account. You shall immediately notify Company of any unauthorized access, use, or disclosure of Credentials. Company shall have no liability for losses or damages arising from Your unauthorized disclosure or misuse of Credentials or Your failure to promptly report unauthorized access.</p>
+<h3>3.2 Authenticated Communications</h3>
+<p>When You access the Service using valid Credentials, Company is authorized to treat any Communication received as properly authorized by and legally binding upon You, even if no such authorization was in fact given, the Communication is fraudulent, or it conflicts with other instructions. Company shall be under no obligation to verify the authenticity of any Communication or the authority of any person purporting to transmit it.</p>
+<h3>3.3 Non-Transferability</h3>
+<p>Credentials are strictly non-transferable and non-shareable. You may not permit any third party to use Your Credentials without Company’s prior written consent. Unauthorized sharing of Credentials constitutes a material breach of these Terms.</p>
+
+<h2>Section 4 — Acceptable Use</h2>
+<p>You shall not, and shall procure that no Authorized User or other person using Your Credentials will:</p>
+<ul>
+  <li>(a) upload, transmit, or store any Content that is unlawful, defamatory, obscene, threatening, abusive, discriminatory, or that infringes any Intellectual Property Right or privacy right of any third party;</li>
+  <li>(b) violate, cause to be violated, or facilitate violation of any export control law, sanctions program, or trade restriction, including without limitation the International Traffic in Arms Regulations (ITAR), Export Administration Regulations (EAR), or programs administered by the Office of Foreign Assets Control (OFAC);</li>
+  <li>(c) interfere with, disrupt, disable, or attempt to gain unauthorized access to the Service, its infrastructure, or the accounts of other users;</li>
+  <li>(d) reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code, algorithms, or architecture of the Service or Company Technology;</li>
+  <li>(e) remove, obscure, or alter any proprietary notice, label, or marking contained in or on the Service;</li>
+  <li>(f) use the Service for any unlawful purpose or in a manner that violates any applicable law or regulation; or</li>
+  <li>(g) access or use the Service for the purpose of developing, benchmarking, or marketing a competing product or service.</li>
+</ul>
+<p>Company may, in its sole discretion, refuse, suspend, or terminate access to any User who violates these restrictions, without liability.</p>
+
+<h2>Section 5 — Intellectual Property</h2>
+<h3>5.1 Ownership of Your Content</h3>
+<p>As between You and Company, You retain all Intellectual Property Rights in Your Content. Nothing in these Terms transfers or purports to transfer ownership of Your Content to Company.</p>
+<h3>5.2 License to Company</h3>
+<p>You hereby grant Company a limited, non-exclusive, royalty-free, worldwide license to access, use, reproduce, process, transmit, convert, store, display, and deliver Your Content solely to the extent necessary to provide the Service to You, and for no other purpose. This license terminates upon the earlier of: (a) Your deletion of Your Content from the Service; or (b) termination of Your account, subject to any retention obligations under applicable law.</p>
+<h3>5.3 Company Technology</h3>
+<p>All Intellectual Property Rights in and to the Company Technology are and shall remain the sole and exclusive property of Company or its licensors. No rights in or to the Company Technology are granted except the limited license in Section 5.4.</p>
+<h3>5.4 License to You</h3>
+<p>Subject to Your full compliance with these Terms and payment of all applicable fees, Company grants You a limited, revocable, non-exclusive, non-transferable, non-sublicensable, non-assignable license to access and use the Service solely for Your lawful internal business purposes during the term of these Terms. This license does not include any right to:</p>
+<ul>
+  <li>(a) sublicense, resell, distribute, or commercially exploit the Service or any component thereof;</li>
+  <li>(b) copy, modify, adapt, translate, or create derivative works based upon the Service;</li>
+  <li>(c) reverse engineer, decompile, or otherwise derive the source code or algorithms of any part of the Service;</li>
+  <li>(d) use the Service for any competitive purpose or to develop a competing product or service; or</li>
+  <li>(e) remove or alter any proprietary notice, label, or trademark.</li>
+</ul>
+<h3>5.5 Reservation of Rights</h3>
+<p>All rights not expressly granted herein are reserved. No license or right is granted by implication, estoppel, waiver, or otherwise. Company’s failure to enforce any Intellectual Property Right at any time shall not constitute a waiver thereof.</p>
+<h3>5.6 Feedback</h3>
+<p>You hereby irrevocably assign to Company all right, title, and interest in and to any Feedback, including all associated Intellectual Property Rights, effective upon creation. You waive any moral rights in Feedback to the fullest extent permitted by applicable law. Company may use, reproduce, sublicense, or commercialize Feedback without restriction, notice, or compensation.</p>
+<h3>5.7 Moral Rights Waiver</h3>
+<p>To the extent You upload or submit Content in which You hold moral rights or author’s rights, You irrevocably waive those rights as against Company to the fullest extent permitted by applicable law.</p>
+
+<h2>Section 6 — Privacy</h2>
+<p>Your use of the Service is governed by the <a href="./Privacy Policy.html">VShip Privacy Policy</a>, which is incorporated into these Terms by reference and forms part of this agreement. By using the Service, You consent to Company’s collection, use, and processing of Personal Information as described in the Privacy Policy. In the event of any conflict between these Terms and the Privacy Policy regarding the treatment of Personal Information, the Privacy Policy shall prevail.</p>
+
+<h2>Section 7 — Representations, Warranties, and Disclaimers</h2>
+<h3>7.1 User Representations and Warranties</h3>
+<p>You represent, warrant, and covenant to Company, as of the date of acceptance of these Terms and on a continuous basis throughout Your use of the Service, that:</p>
+<ul>
+  <li><strong>(a) Authority.</strong> You have full legal capacity, power, and authority to enter into and perform Your obligations under these Terms. If entering into these Terms on behalf of an entity, You represent that You have authority to bind that entity and its Affiliates.</li>
+  <li><strong>(b) No Conflicting Obligations.</strong> Your entry into and performance of these Terms does not and will not conflict with, breach, or violate any agreement, instrument, obligation, law, regulation, or court order to which You or Your entity are subject.</li>
+  <li><strong>(c) Your Content.</strong> You own or hold all necessary rights, licenses, consents, and permissions to upload, transmit, and share Your Content. Your Content does not and will not: (i) infringe any Intellectual Property Right of any third party; (ii) violate any privacy right, right of publicity, or applicable data protection law; (iii) violate any export control law, sanctions program, or trade restriction; or (iv) contain material that is unlawful, defamatory, obscene, or otherwise objectionable.</li>
+  <li><strong>(d) Third-Party Consents.</strong> You have obtained all necessary consents and authorizations from individuals whose Personal Information appears in Your Content, including buyers, sellers, signatories, and other persons identified in Documents.</li>
+  <li><strong>(e) Export Compliance.</strong> You are not: (i) listed on any U.S. Government denied-party or restricted-party list; (ii) organized under the laws of, or resident in, any country or territory subject to comprehensive U.S. economic sanctions; or (iii) using the Service for any purpose prohibited under applicable export control laws.</li>
+  <li><strong>(f) Accuracy.</strong> All information You provide in connection with Your account or use of the Service is and shall remain accurate, current, and complete.</li>
+</ul>
+<h3>7.2 Company Disclaimers</h3>
+<p>THE SERVICE IS PROVIDED “AS-IS” AND “AS AVAILABLE” WITHOUT WARRANTY OR CONDITION OF ANY KIND, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, COMPANY, ON BEHALF OF ITSELF AND ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND LICENSORS, EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING:</p>
+<ul>
+  <li>(a) implied warranties of merchantability, fitness for a particular purpose, title, quiet enjoyment, and non-infringement;</li>
+  <li>(b) any warranty that the service will be uninterrupted, timely, secure, or error-free, or that defects will be corrected;</li>
+  <li>(c) any warranty as to the accuracy, reliability, or completeness of any content, data, or information processed or delivered through the service;</li>
+  <li>(d) any warranty that the service will meet your requirements or achieve any particular result;</li>
+  <li>(e) any warranty regarding acts or omissions of third parties, including delivery recipients, service providers, or document management systems; and</li>
+  <li>(f) any warranty that your documents will be delivered free of interception, alteration, or delay.</li>
+</ul>
+<h3>7.3 No Professional Advice</h3>
+<p>THE SERVICE IS A DOCUMENT TRANSMISSION TOOL ONLY. NOTHING IN THE SERVICE OR THESE TERMS CONSTITUTES LEGAL, CUSTOMS, REGULATORY, FINANCIAL, OR PROFESSIONAL ADVICE OF ANY KIND. YOU ARE SOLELY RESPONSIBLE FOR ENSURING YOUR DOCUMENTS AND EXPORT ACTIVITIES COMPLY WITH ALL APPLICABLE LAWS AND REGULATIONS.</p>
+<h3>7.4 Third-Party Services</h3>
+<p>Company disclaims all responsibility for any third-party websites, services, systems, or content linked from or accessible through the Service. Availability of any third-party service through the Service does not constitute an endorsement.</p>
+
+<h2>Section 8 — Limitation of Liability</h2>
+<h3>8.1 Exclusion of Consequential Damages</h3>
+<p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL COMPANY OR ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES (INCLUDING WITHOUT LIMITATION LOST PROFITS, LOST DATA, LOSS OF USE, BUSINESS INTERRUPTION, OR COST OF COVER) ARISING OUT OF OR IN CONNECTION WITH THESE TERMS, THE SERVICE, OR YOUR USE THEREOF, EVEN IF COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<h3>8.2 Aggregate Liability Cap</h3>
+<p>NOTWITHSTANDING ANY OTHER PROVISION, COMPANY’S TOTAL AGGREGATE LIABILITY FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE LESSER OF: (A) THE TOTAL AMOUNT YOU PAID TO COMPANY IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE CLAIM; OR (B) ONE HUNDRED UNITED STATES DOLLARS ($100 USD).</p>
+<h3>8.3 Statutory Floor</h3>
+<p>The exclusions and limitations set forth in Sections 8.1 and 8.2 apply to the fullest extent permitted by applicable law. To the extent any applicable law prohibits or limits the exclusion or limitation of liability, such exclusion or limitation shall apply to the maximum extent permitted under that law, and Company’s liability shall be limited to the minimum extent required by applicable law.</p>
+
+<h2>Section 9 — Indemnification</h2>
+<h3>9.1 Indemnification by You</h3>
+<p>You agree to indemnify, defend (with counsel acceptable to Company in its reasonable discretion), and hold harmless Company and its Affiliates, officers, directors, employees, agents, successors, and licensors (collectively, “Company Indemnitees”) from and against any and all third-party claims, demands, actions, suits, proceedings, judgments, damages, losses, liabilities, costs, and expenses (including reasonable attorneys’ fees and court costs) arising out of or relating to: (a) Your Content, including any allegation that Your Content infringes any third-party Intellectual Property Right or violates any person’s privacy or data protection rights; (b) Your use of the Service in violation of these Terms or applicable law; (c) Your breach of any representation, warranty, or covenant; (d) Your violation of any applicable export control law, sanction, or trade restriction; or (e) acts or omissions of any Authorized User under Your Credentials.</p>
+<h3>9.2 Indemnification by Company</h3>
+<p>Company agrees to indemnify, defend, and hold harmless You and Your Affiliates, officers, directors, and employees from and against any third-party claim alleging that the Service, as provided by Company and used by You in accordance with these Terms, infringes any patent, copyright, trademark, or trade secret right of a third party; provided that Company shall have no obligation under this Section 9.2 to the extent any claim arises from: (a) Your modification of the Service; (b) Your combination of the Service with products or services not provided or approved by Company; (c) Your use of the Service in violation of these Terms; or (d) Your Content.</p>
+<h3>9.3 Indemnification Procedure</h3>
+<p>The party seeking indemnification (“Indemnified Party”) shall: (a) promptly notify the indemnifying party (“Indemnifying Party”) in writing of any claim for which indemnification is sought, provided that failure to provide timely notice shall not relieve the Indemnifying Party of its obligations except to the extent of actual prejudice; (b) grant the Indemnifying Party sole control of the defense and settlement of such claim; and (c) provide reasonable cooperation at the Indemnifying Party’s expense. The Indemnified Party may participate in the defense at its own cost. The Indemnifying Party may not settle any claim that imposes obligations or liability on the Indemnified Party without prior written consent.</p>
+
+<h2>Section 10 — Termination</h2>
+<h3>10.1 Termination Rights</h3>
+<p>Either party may terminate Your access to the Service, with or without cause, upon written notice. Company may terminate immediately and without notice upon Your material breach of these Terms. Upon termination, Your license ends immediately and You must cease all use of the Service.</p>
+<h3>10.2 Effect of Termination</h3>
+<p>Termination shall not affect any rights or liabilities of the parties accrued prior to termination. Sections addressing Intellectual Property, Limitation of Liability, Indemnification, Dispute Resolution, and General Provisions shall survive termination and continue in full force.</p>
+
+<h2>Section 11 — Modifications and Amendments</h2>
+<p>Company may amend these Terms at any time by posting the revised version through the Service or otherwise notifying You. Continued use of the Service following notice of any amendment constitutes Your acceptance of the amended Terms. If You do not accept an amendment, Your sole remedy is to cease using the Service.</p>
+
+<h2>Section 12 — Governing Law and Dispute Resolution</h2>
+<h3>12.1 Governing Law</h3>
+<p>These Terms shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of laws provisions.</p>
+<h3>12.2 Binding Arbitration</h3>
+<p>Any dispute, claim, or controversy arising out of or relating to these Terms, the Service, or Your use thereof shall be finally resolved by binding arbitration administered by the American Arbitration Association (“AAA”) in accordance with its Commercial Arbitration Rules then in effect. The arbitration shall be conducted in New York County, New York. The arbitrator’s award shall be final, binding, and enforceable in any court of competent jurisdiction.</p>
+<h3>12.3 Costs and Fees</h3>
+<p>Each party shall bear its own attorneys’ fees and costs, except that the arbitrator may award fees and costs to the prevailing party where permitted. Company shall advance any AAA administrative fees that exceed the amount the User would incur in court.</p>
+<h3>12.4 Injunctive Relief</h3>
+<p>Notwithstanding the foregoing, either party may seek injunctive or other equitable relief (including temporary restraining orders and preliminary injunctions) in any court of competent jurisdiction to prevent irreparable harm without waiving its right to arbitration.</p>
+
+<h2>Section 13 — General Provisions</h2>
+<h3>13.1 Entire Agreement</h3>
+<p>These Terms, together with the Privacy Policy, constitute the entire agreement between You and Company with respect to the Service and supersede all prior and contemporaneous negotiations, representations, understandings, and agreements, whether written or oral.</p>
+<h3>13.2 Severability</h3>
+<p>If any provision of these Terms is found to be unenforceable, invalid, or illegal under applicable law, that provision shall be severed from these Terms, and the remaining provisions shall continue in full force and effect as if the severed provision had never been included.</p>
+<h3>13.3 Waiver</h3>
+<p>Failure or delay by Company to exercise or enforce any right or remedy shall not constitute a waiver of that or any other right or remedy. Any waiver shall be effective only if made in writing by an authorized representative of Company.</p>
+<h3>13.4 Assignment</h3>
+<p>You may not assign, delegate, novate, or otherwise transfer these Terms or any right or obligation hereunder without Company’s prior written consent. Company may assign these Terms to any Affiliate or successor, in connection with a merger, acquisition, or sale of all or substantially all of its assets, without notice or consent.</p>
+<h3>13.5 Force Majeure</h3>
+<p>Company shall not be liable for any failure or delay in performing its obligations caused by circumstances beyond its reasonable control, including acts of God, government action, armed conflict, terrorism, pandemic, natural disaster, or failure of utilities or telecommunications infrastructure.</p>
+<h3>13.6 Relationship of the Parties</h3>
+<p>The parties are independent contractors. Nothing in these Terms creates any partnership, joint venture, agency, franchise, or employment relationship between the parties.</p>
+<h3>13.7 Notices</h3>
+<p>Notices under these Terms shall be in writing and delivered by email or overnight courier to the addresses set out in the contact section. Notices to Company shall be sent to admin@vship2000.com. Notice is effective upon confirmation of receipt.</p>
+<h3>13.8 Third-Party Beneficiaries</h3>
+<p>These Terms are entered into solely for the benefit of the parties and do not confer any rights or remedies on any third party.</p>
+
+<h2>Section 14 — Contact</h2>
+<p>For questions or notices regarding these Terms:</p>
+<ul>
+  <li><strong>Email:</strong> <a href="mailto:admin@vship2000.com">admin@vship2000.com</a></li>
+  <li><strong>Phone:</strong> +1 (718) 706-8566</li>
+  <li><strong>Mail:</strong> VShip, 3636 33rd Street, Astoria, NY 11106, United States</li>
+</ul>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="./index_files/VShip-logo-1024px-transparent.png" onerror="this.style.display='none'" alt="VShip Logo" style="display: none;">
+      <p>VShip Co — the trade name of KOIL INC — is a U.S. Federal Maritime Commission licensed Non-Vessel Operating Common Carrier (NVOCC) and Ocean Transportation Intermediary (OTI) specializing in used vehicle exports to West Africa.</p>
+      <p class="fmc-note">📋 FMC Licensed NVOCC / OTI &nbsp;|&nbsp; CBP Compliant &nbsp;|&nbsp; COGSA Governed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="./index.html#services">Services</a></li>
+        <li><a href="./index.html#carriers">Carriers</a></li>
+        <li><a href="./index.html#destinations">Destinations</a></li>
+        <li><a href="./index.html#bol">Bill of Lading Terms</a></li>
+        <li><a href="./index.html#regulations">Regulations</a></li>
+        <li><a href="./index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Carriers</h4>
+      <ul>
+        <li><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC Tracking</a></li>
+        <li><a href="https://www.cma-cgm.com/" target="_blank">CMA CGM Tracking</a></li>
+        <li><a href="https://www.maersk.com/tracking/" target="_blank">Maersk Tracking</a></li>
+        <li><a href="https://www.grimaldi-lines.com/" target="_blank">Grimaldi Lines</a></li>
+        <li><a href="http://rates.descartes.com/" target="_blank">Tariff Rates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Regulation Links</h4>
+      <ul>
+        <li><a href="https://www.cbp.gov/" target="_blank">CBP</a></li>
+        <li><a href="https://www.fmc.gov/" target="_blank">FMC</a></li>
+        <li><a href="https://www.dot.gov/" target="_blank">DOT</a></li>
+        <li><a href="https://www.export.gov/" target="_blank">Export.gov</a></li>
+        <li><a href="https://aesdirect.census.gov/" target="_blank">AES Direct</a></li>
+        <li><a href="https://www.xe.com/ucc" target="_blank">Currency Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>VShip Documents Upload App</h4>
+      <ul>
+        <li><a href="./Privacy Policy.html">App Privacy Policy</a></li>
+        <li><a href="./Terms and Conditions.html">App Terms of Service</a></li>
+        <li><a href="./Account Deletion.html">Account Deletion</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2000–2026 VShip Co · KOIL INC · All Rights Reserved · 36-36 33rd St, Ste 405, Long Island City, NY 11106</p>
+    <div class="footer-bottom-links">
+      <a href="#" onclick="openModal('terms');return false;">Terms of Service</a>
+      <a href="#" onclick="openModal('privacy');return false;">Privacy Policy</a>
+      <a href="./index.html#bol">Bill of Lading Terms</a>
+      <a href="./index.html#regulations">Regulations</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: Terms of Service -->
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Terms of Service</h2>
+      <button class="modal-close" onclick="closeModal('terms')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Acceptance of Terms</h3>
+      <p>By using the services of VShip Co (KOIL INC), you agree to be bound by these Terms of Service and all applicable federal regulations governing ocean transportation, including those administered by the U.S. Federal Maritime Commission (FMC) and U.S. Customs and Border Protection (CBP).</p>
+      <h3>Services Description</h3>
+      <p>VShip Co acts as a licensed NVOCC/OTI arranging ocean freight transportation. We issue House Bills of Lading governed by COGSA (46 U.S.C. §§1300–1315) and FMC-published tariffs. VShip Co is not a vessel operator and arranges carriage through VOCs.</p>
+      <h3>Shipper Obligations</h3>
+      <p>The Shipper warrants the accuracy of all commodity descriptions, vehicle identification numbers (VINs), weights, and export documentation, including original vehicle titles cleared with CBP. The Shipper is responsible for compliance with all U.S. export control laws and the Foreign Trade Regulations (15 CFR Part 30).</p>
+      <h3>Liability</h3>
+      <p>Carrier liability is governed by COGSA and limited to US$500 per package unless a higher value is declared in writing and additional freight is paid. VShip Co is not liable for consequential or special damages under any circumstances.</p>
+      <h3>Governing Law</h3>
+      <p>These Terms are governed by the laws of the State of New York. Disputes shall be resolved in the U.S. District Court, Southern District of New York. Suit must be filed within one (1) year of the date of delivery or scheduled delivery.</p>
+      <h3>Tariff</h3>
+      <p>All charges are subject to VShip Co's FMC-published tariff available at <a href="http://rates.descartes.com/" target="_blank" style="color:var(--blue);">rates.descartes.com</a>. Negotiated Rate Arrangements (NRAs) may be entered separately.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Privacy Policy -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Privacy Policy</h2>
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Information We Collect</h3>
+      <p>VShip Co collects personal and business information necessary to arrange ocean freight transportation, including names, addresses, phone numbers, email addresses, vehicle identification numbers (VINs), and export documentation as required by U.S. CBP and FMC regulations.</p>
+      <h3>Use of Information</h3>
+      <p>Information collected is used solely to arrange transportation, comply with federal export and customs requirements (including AES/EEI filing), issue Bills of Lading, and communicate with shippers and consignees regarding their shipments. We do not sell personal information to third parties.</p>
+      <h3>Regulatory Disclosure</h3>
+      <p>We are required by U.S. law to transmit shipper and consignee information to U.S. Customs and Border Protection (CBP) prior to vessel loading, as mandated under the CBP AMS (Automated Manifest System) and AES Direct (Electronic Export Information) programs.</p>
+      <h3>Data Retention</h3>
+      <p>Shipping and transaction records are retained for a minimum of five (5) years in accordance with FMC regulations and standard industry practice.</p>
+      <h3>Security</h3>
+      <p>VShip Co uses commercially reasonable measures to protect your data. However, no data transmission over the internet is 100% secure. Please contact us by phone for highly sensitive information.</p>
+      <h3>Contact</h3>
+      <p>For privacy questions, contact us at <a href="mailto:Bindu@vship2000.com" style="color:var(--blue);">Bindu@vship2000.com</a> or by phone at 718-706-8566.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal open/close — mirrors index.html
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (el) { el.scrollIntoView(); }
+  }
+
+  // Modal open/close
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.onload = function() {
+    // Close modals when clicking backdrop
+    var modals = document.getElementsByClassName('modal-overlay');
+    for (var i = 0; i < modals.length; i++) {
+      modals[i].addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+    // Fade-up scroll animations
+    var fadeEls = document.getElementsByClassName('fade-up');
+    if (window.IntersectionObserver) {
+      for (var j = 0; j < fadeEls.length; j++) {
+        fadeEls[j].style.opacity = '0';
+        fadeEls[j].style.transform = 'translateY(20px)';
+        fadeEls[j].style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }
+      var obs = new IntersectionObserver(function(entries) {
+        for (var k = 0; k < entries.length; k++) {
+          if (entries[k].isIntersecting) {
+            entries[k].target.style.opacity = '1';
+            entries[k].target.style.transform = 'none';
+            obs.unobserve(entries[k].target);
+          }
+        }
+      }, { threshold: 0.05 });
+      for (var l = 0; l < fadeEls.length; l++) {
+        obs.observe(fadeEls[l]);
+      }
+    }
+  };
+</script>
+
+</body>
+</html>

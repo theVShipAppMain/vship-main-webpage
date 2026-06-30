@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VShip Co | International Ocean Freight | NVOCC / OTI</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0d2250;
+    --blue:    #2e4e93;
+    --gold:    #f5a800;
+    --gold-lt: #ffc93c;
+    --white:   #ffffff;
+    --off:     #f4f6fb;
+    --text:    #1c2540;
+    --muted:   #5a6480;
+    --border:  #dde3f0;
+    --shadow:  0 4px 24px rgba(13,34,80,.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    background: var(--white);
+  }
+
+  /* ── TOP BANNER ─────────────────────────────── */
+  .top-banner {
+    background: var(--navy);
+    color: rgba(255,255,255,.75);
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-align: center;
+    padding: .45rem 1rem;
+  }
+  .top-banner a { color: var(--gold); text-decoration: none; }
+  .top-banner a:hover { text-decoration: underline; }
+
+  /* ── HEADER ─────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    border-bottom: 3px solid var(--gold);
+    box-shadow: var(--shadow);
+  }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: .6rem 2rem;
+    gap: 1rem;
+  }
+  .logo-wrap {
+    display: flex; align-items: center; gap: .9rem;
+    text-decoration: none;
+  }
+  .logo-wrap img { height: 58px; width: auto; }
+  .logo-text { line-height: 1.1; }
+  .logo-text .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem; font-weight: 800;
+    color: var(--navy); letter-spacing: .02em;
+  }
+  .logo-text .tagline {
+    font-size: .7rem; color: var(--muted);
+    letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* NAV */
+  nav ul {
+    list-style: none; display: flex; gap: .15rem; align-items: center;
+  }
+  nav a {
+    display: block; padding: .5rem .85rem;
+    font-size: .84rem; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--navy); border-radius: 4px;
+    transition: background .18s, color .18s;
+  }
+  nav a:hover { background: var(--off); color: var(--blue); }
+  nav .cta-btn {
+    background: var(--gold); color: var(--navy);
+    border-radius: 4px; padding: .5rem 1.1rem;
+  }
+  nav .cta-btn:hover { background: var(--gold-lt); }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .4rem; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: .25s; }
+  #nav-toggle { display: none; }
+
+  /* ── HERO ────────────────────────────────────── */
+  .hero {
+    position: relative;
+    background: var(--navy);
+    overflow: hidden;
+    min-height: 520px;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(13,34,80,.97) 40%, #2e4e93 100%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: .06;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px, rgba(255,255,255,1) 39px, rgba(255,255,255,1) 40px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 39px, rgba(255,255,255,1) 39px, rgba(255,255,255,1) 40px
+    );
+  }
+  .hero-wave {
+    position: absolute; bottom: -1px; left: 0; right: 0;
+  }
+  .hero-wave svg { display: block; width: 100%; }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1280px; margin: 0 auto;
+    padding: 5rem 2rem 7rem;
+    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: .72rem; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: .9rem;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800; line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.05rem; color: rgba(255,255,255,.8);
+    line-height: 1.7; max-width: 520px;
+    font-family: 'Source Serif 4', serif; font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .hero-badges {
+    display: flex; gap: .7rem; flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+    color: rgba(255,255,255,.85);
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; padding: .35rem .8rem; border-radius: 3px;
+  }
+  .badge.gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+  /* Quote card */
+  .hero-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.15);
+    border-top: 3px solid var(--gold);
+    border-radius: 8px; padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  .hero-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--white);
+    margin-bottom: 1.2rem; letter-spacing: .04em;
+  }
+  .hero-card p {
+    font-size: .85rem; color: rgba(255,255,255,.65);
+    line-height: 1.6; margin-bottom: 1.5rem;
+  }
+  .hero-card .contact-list { list-style: none; margin-bottom: 1.5rem; }
+  .hero-card .contact-list li {
+    display: flex; align-items: center; gap: .6rem;
+    font-size: .85rem; color: rgba(255,255,255,.75);
+    padding: .35rem 0; border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .hero-card .contact-list li:last-child { border-bottom: none; }
+  .hero-card .contact-list .icon { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+  .btn-gold {
+    display: inline-block; width: 100%; text-align: center;
+    background: var(--gold); color: var(--navy);
+    font-weight: 700; font-size: .88rem; letter-spacing: .06em;
+    text-transform: uppercase; text-decoration: none;
+    padding: .85rem 1.5rem; border-radius: 4px;
+    transition: background .18s, transform .15s;
+  }
+  .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+  /* ── SECTION COMMON ─────────────────────────── */
+  section { padding: 5rem 2rem; scroll-margin-top: 80px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: .6rem;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+    font-weight: 800; color: var(--navy); line-height: 1.1;
+    margin-bottom: .7rem;
+  }
+  .section-sub {
+    font-family: 'Source Serif 4', serif; font-weight: 300;
+    font-size: 1.05rem; color: var(--muted);
+    line-height: 1.7; max-width: 640px;
+    margin-bottom: 3rem;
+  }
+  hr.gold-rule {
+    border: none; border-top: 3px solid var(--gold);
+    width: 50px; margin: .8rem 0 1.5rem;
+  }
+
+  /* ── SERVICES ─────────────────────────────── */
+  #services { background: var(--off); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--navy);
+    border-radius: 6px; padding: 2rem 1.5rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .service-card:hover {
+    box-shadow: var(--shadow); transform: translateY(-3px);
+  }
+  .service-icon {
+    font-size: 2rem; margin-bottom: 1rem; display: block;
+  }
+  .service-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--navy);
+    margin-bottom: .6rem; letter-spacing: .03em;
+  }
+  .service-card p {
+    font-size: .88rem; color: var(--muted); line-height: 1.65;
+  }
+
+  /* ── CARRIERS ─────────────────────────────── */
+  #carriers { background: var(--white); }
+  .carriers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem; margin-bottom: 2.5rem;
+  }
+  .carrier-card {
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 2rem 1.5rem;
+    text-align: center;
+    transition: box-shadow .2s, transform .2s;
+    background: var(--white);
+  }
+  .carrier-card:hover {
+    box-shadow: var(--shadow); transform: translateY(-3px);
+    border-color: var(--gold);
+  }
+  .carrier-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 800;
+    letter-spacing: .05em; margin-bottom: .4rem;
+  }
+  .carrier-flag { font-size: 1.4rem; margin-bottom: .7rem; display: block; }
+  .carrier-card p { font-size: .83rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+  .carrier-link {
+    display: inline-block;
+    font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--blue);
+    text-decoration: none; border-bottom: 2px solid var(--gold);
+    padding-bottom: 1px; transition: color .15s;
+  }
+  .carrier-link:hover { color: var(--gold); }
+  /* Brand colors */
+  .msc   .carrier-name { color: #2e4e93; }
+  .cma   .carrier-name { color: #e84b1a; }
+  .maersk .carrier-name { color: #006EB6; }
+  .grim  .carrier-name { color: #2e4e93; }
+
+  /* ── DESTINATIONS ─────────────────────────── */
+  #destinations { background: var(--navy); color: var(--white); }
+  #destinations .section-title { color: var(--white); }
+  #destinations .section-sub { color: rgba(255,255,255,.65); }
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .dest-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-left: 3px solid var(--gold);
+    border-radius: 5px; padding: 1rem 1.2rem;
+    transition: background .2s;
+  }
+  .dest-card:hover { background: rgba(255,255,255,.1); }
+  .dest-card .flag { font-size: 1.6rem; display: block; margin-bottom: .4rem; }
+  .dest-card .country {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); letter-spacing: .04em;
+  }
+  .dest-card .port { font-size: .75rem; color: rgba(255,255,255,.5); margin-top: .15rem; }
+
+  /* ── BOL ──────────────────────────────────── */
+  #bol { background: var(--off); }
+  .bol-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 0;
+    overflow: hidden;
+    max-height: 520px;
+  }
+  .bol-header {
+    background: var(--navy); color: var(--white);
+    padding: 1rem 1.5rem; display: flex; align-items: center; gap: .8rem;
+  }
+  .bol-header span { font-size: 1.2rem; }
+  .bol-header h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem; font-weight: 700; letter-spacing: .05em;
+  }
+  .bol-scroll {
+    overflow-y: auto; max-height: 440px; padding: 1.5rem 2rem;
+  }
+  .bol-scroll::-webkit-scrollbar { width: 6px; }
+  .bol-scroll::-webkit-scrollbar-track { background: var(--off); }
+  .bol-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .bol-clause { margin-bottom: 1.5rem; }
+  .bol-clause h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .95rem; font-weight: 700; color: var(--navy);
+    letter-spacing: .06em; text-transform: uppercase;
+    margin-bottom: .4rem; border-bottom: 1px solid var(--border);
+    padding-bottom: .3rem;
+  }
+  .bol-clause p {
+    font-size: .82rem; color: var(--muted); line-height: 1.7;
+  }
+
+  /* ── REGULATIONS ──────────────────────────── */
+  #regulations { background: var(--white); }
+  .reg-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+  }
+  @media (max-width: 800px) { .reg-grid { grid-template-columns: 1fr; } }
+  .reg-group h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    letter-spacing: .08em; text-transform: uppercase;
+    border-bottom: 2px solid var(--gold); padding-bottom: .4rem;
+    margin-bottom: .9rem;
+  }
+  .reg-group ul { list-style: none; }
+  .reg-group li { margin-bottom: .55rem; }
+  .reg-group a {
+    display: flex; align-items: flex-start; gap: .45rem;
+    font-size: .83rem; color: var(--blue); text-decoration: none;
+    line-height: 1.4;
+    transition: color .15s;
+  }
+  .reg-group a::before {
+    content: '→'; color: var(--gold); font-size: .85rem;
+    flex-shrink: 0; margin-top: .05em;
+  }
+  .reg-group a:hover { color: var(--navy); }
+
+  /* ── CONTACT ──────────────────────────────── */
+  #contact { background: var(--off); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info-list { list-style: none; margin-top: 1.5rem; }
+  .contact-info-list li {
+    display: flex; gap: .8rem; align-items: flex-start;
+    padding: .7rem 0; border-bottom: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  .contact-info-list li:last-child { border-bottom: none; }
+  .contact-info-list .ci-icon {
+    font-size: 1.1rem; color: var(--gold); flex-shrink: 0; margin-top: .1em;
+  }
+  .contact-info-list strong { display: block; font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .15rem; }
+  .contact-info-list span { color: var(--text); }
+  .contact-info-list a { color: var(--blue); text-decoration: none; }
+  .contact-info-list a:hover { color: var(--gold); }
+
+  /* Form */
+  .contact-form { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; }
+  .contact-form h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 1.4rem; letter-spacing: .04em;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block; font-size: .75rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: .35rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: .65rem .9rem;
+    border: 1px solid var(--border); border-radius: 4px;
+    font-family: 'Barlow', sans-serif; font-size: .88rem; color: var(--text);
+    background: var(--white); transition: border-color .15s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--blue); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .btn-submit {
+    width: 100%; background: var(--navy); color: var(--white);
+    font-family: 'Barlow', sans-serif; font-weight: 700;
+    font-size: .88rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .85rem; border: none; border-radius: 4px; cursor: pointer;
+    transition: background .18s;
+  }
+  .btn-submit:hover { background: var(--blue); }
+  #form-msg {
+    margin-top: .7rem; font-size: .85rem; color: green;
+    text-align: center; display: none;
+  }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer { background: var(--navy); color: rgba(255,255,255,.65); }
+  .footer-main {
+    max-width: 1280px; margin: 0 auto;
+    padding: 3.5rem 2rem 2.5rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem;
+  }
+  .footer-brand img { height: 50px; margin-bottom: .9rem; }
+  .footer-brand p {
+    font-family: 'Source Serif 4', serif; font-weight: 300;
+    font-size: .83rem; line-height: 1.7; max-width: 280px;
+    color: rgba(255,255,255,.5);
+  }
+  .footer-brand .fmc-note {
+    margin-top: .9rem; font-size: .72rem;
+    color: var(--gold); letter-spacing: .06em; font-family: 'Barlow', sans-serif;
+  }
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .9rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: .9rem; border-bottom: 1px solid rgba(255,255,255,.1);
+    padding-bottom: .4rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: .4rem; }
+  .footer-col a {
+    font-size: .82rem; color: rgba(255,255,255,.5); text-decoration: none;
+    transition: color .15s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    max-width: 1280px; margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: .8rem;
+  }
+  .footer-bottom p { font-size: .75rem; }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a {
+    font-size: .75rem; color: rgba(255,255,255,.4);
+    text-decoration: none; transition: color .15s;
+  }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(13,34,80,.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white); border-radius: 8px;
+    max-width: 740px; width: 100%; max-height: 85vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  }
+  .modal-head {
+    background: var(--navy); color: var(--white);
+    padding: 1.1rem 1.5rem; border-radius: 8px 8px 0 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem; font-weight: 700; letter-spacing: .05em;
+  }
+  .modal-close {
+    background: none; border: none; color: var(--white);
+    font-size: 1.4rem; cursor: pointer; line-height: 1; padding: .2rem .4rem;
+  }
+  .modal-body { overflow-y: auto; padding: 1.5rem 2rem; }
+  .modal-body p, .modal-body li {
+    font-size: .85rem; color: var(--muted); line-height: 1.75;
+  }
+  .modal-body h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem;
+    font-weight: 700; color: var(--navy); text-transform: uppercase;
+    letter-spacing: .06em; margin: 1.2rem 0 .4rem;
+    border-bottom: 1px solid var(--border); padding-bottom: .3rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 960px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-card { max-width: 480px; }
+    .footer-main { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    nav ul { display: none; flex-direction: column; width: 100%; }
+    #nav-toggle:checked ~ ul { display: flex; }
+    .hamburger { display: flex; }
+    .header-inner { flex-wrap: wrap; }
+    nav { width: 100%; order: 3; }
+    nav ul {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: .5rem 0;
+    }
+    nav a { padding: .6rem 1.2rem; }
+    .reg-grid { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll animation — handled by JS inline styles */
+  .fade-up { }
+</style>
+</head>
+<body style="">
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  FMC Licensed NVOCC · OTI Bonded Carrier &nbsp;|&nbsp; Used Automobile Export Specialists to West Africa &nbsp;|&nbsp;
+  <a href="https://www.fmc.gov/" target="_blank">Regulated by the U.S. Federal Maritime Commission</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="./index.html" class="logo-wrap">
+      <!-- VShip logo embedded as inline SVG fallback, replaced by img -->
+      <img src="./logoIG.svg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="VShip Logo" style="display: flex;">
+      <div class="logo-text">
+        <div class="brand">VSHIP CO</div>
+        <div class="tagline">International Ocean Freight</div>
+      </div>
+    </a>
+    <nav>
+      <label for="nav-toggle" class="hamburger">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="nav-toggle">
+      <ul>
+        <li><a href="./index.html#services" onclick="scrollToSection('services');return false;">Services</a></li>
+        <li><a href="./index.html#carriers" onclick="scrollToSection('carriers');return false;">Carriers</a></li>
+        <li><a href="./index.html#destinations" onclick="scrollToSection('destinations');return false;">Destinations</a></li>
+        <li><a href="./index.html#bol" onclick="scrollToSection('bol');return false;">Bill of Lading</a></li>
+        <li><a href="./index.html#regulations" onclick="scrollToSection('regulations');return false;">Regulations</a></li>
+        <li><a href="./index.html#contact" onclick="scrollToSection('contact');return false;" class="cta-btn">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div>
+      <p class="hero-eyebrow">● Trusted NVOCC / OTI Since 2000</p>
+      <h1>Moving Vehicles<br>From <span>America</span><br>To West Africa</h1>
+      <p class="hero-sub">
+        VShip Co — the trade name of KOIL INC — is a federally licensed Non-Vessel Operating
+        Common Carrier (NVOCC) and Ocean Transportation Intermediary (OTI), regulated by the
+        U.S. Federal Maritime Commission. We specialize in the export of used automobiles
+        to West Africa through major VOCs.
+      </p>
+      <div class="hero-badges">
+        <span class="badge gold">FMC Licensed</span>
+        <span class="badge">NVOCC / OTI</span>
+        <span class="badge">CBP Compliant</span>
+        <span class="badge">West Africa Specialists</span>
+      </div>
+    </div>
+    <div class="hero-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+      <h3>📦 Get a Shipping Quote</h3>
+      <p>Reach our team for competitive ocean freight rates on used vehicles and containerized cargo to West Africa.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="icon">📞</span>
+          <span>718-706-8566</span>
+        </li>
+        <li>
+          <span class="icon">✉️</span>
+          <span>Bindu@vship2000.com</span>
+        </li>
+        <li>
+          <span class="icon">📍</span>
+          <span>36-36 33rd Street, Ste 405<br>Long Island City, NY 11106</span>
+        </li>
+        <li>
+          <span class="icon">🕐</span>
+          <span>Mon–Fri &nbsp;9 AM – 5:30 PM EST</span>
+        </li>
+      </ul>
+      <a href="./index.html#contact" onclick="scrollToSection('contact');return false;" class="btn-gold">Request a Quote →</a>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#f4f6fb"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Our Services</h2>
+    <hr class="gold-rule">
+    <p class="section-sub">As a licensed NVOCC/OTI, VShip Co handles every stage of your ocean export — from title clearing through CBP to final Bill of Lading issuance and container delivery at West African ports.</p>
+    <div class="services-grid">
+      <div class="service-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="service-icon">🚗</span>
+        <h3>Used Automobile Export</h3>
+        <p>We specialize in the export of used vehicles — cars, SUVs, trucks, and vans — to West African destinations. Titles are properly cleared with U.S. Customs &amp; Border Protection under the customs export rules prior to loading.</p>
+      </div>
+      <div class="service-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="service-icon">📄</span>
+        <h3>Ocean Bill of Lading Issuance</h3>
+        <p>As an NVOCC, VShip Co issues its own House Bills of Lading, providing shippers with a direct contractual relationship and full COGSA liability protection for all cargo movements.</p>
+      </div>
+      <div class="service-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="service-icon">🛳️</span>
+        <h3>Carrier Booking &amp; Coordination</h3>
+        <p>We book space with major VOCs including MSC, CMA CGM, Maersk, and Grimaldi Lines, securing competitive freight rates and reliable sailing schedules to West African ports.</p>
+      </div>
+      <div class="service-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="service-icon">📦</span>
+        <h3>Container &amp; RoRo Arrangements</h3>
+        <p>Whether your vehicle ships in a 20' or 40' container, or rolls on/rolls off via RoRo service, we coordinate the right mode to suit your cargo, timeline, and destination port requirements.</p>
+      </div>
+      <div class="service-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="service-icon">🔍</span>
+        <h3>CBP Title Clearance</h3>
+        <p>Original vehicle titles are processed and cleared with U.S. Customs &amp; Border Protection as required under federal export regulations (15 CFR Part 192), ensuring lawful export of all vehicles.</p>
+      </div>
+      <div class="service-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="service-icon">📊</span>
+        <h3>AES / EEI Filing</h3>
+        <p>We handle Electronic Export Information (EEI) filings through AES Direct (U.S. Census Bureau), ensuring your shipment complies with the Foreign Trade Regulations and avoids costly penalties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIERS -->
+<section id="carriers">
+  <div class="section-inner">
+    <p class="section-label">Our Partners</p>
+    <h2 class="section-title">Vessel Operating Carriers</h2>
+    <hr class="gold-rule">
+    <p class="section-sub">VShip Co works directly with four of the world's leading ocean carriers to provide reliable, scheduled ocean freight services from U.S. ports to West Africa.</p>
+    <div class="carriers-grid">
+      <div class="carrier-card msc fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="carrier-flag">🇨🇭</span>
+        <div class="carrier-name">MSC</div>
+        <p>Mediterranean Shipping Company — the world's largest container line by fleet capacity, offering extensive coverage of West African ports including Lagos, Abidjan, Tema, and Dakar.</p>
+        <a href="https://www.msc.com/en/track-a-shipment" target="_blank" class="carrier-link">Track Shipment ↗</a>
+      </div>
+      <div class="carrier-card cma fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="carrier-flag">🇫🇷</span>
+        <div class="carrier-name">CMA CGM</div>
+        <p>CMA CGM Group is a world leader in shipping and logistics with extensive West Africa services including Abidjan, Conakry, Lomé, and Cotonou among many others.</p>
+        <a href="https://www.cma-cgm.com/" target="_blank" class="carrier-link">Track Shipment ↗</a>
+      </div>
+      <div class="carrier-card maersk fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="carrier-flag">🇩🇰</span>
+        <div class="carrier-name">Maersk</div>
+        <p>A.P. Møller-Maersk is a global integrated logistics leader with dedicated West Africa liner services from U.S. East Coast and Gulf ports, connecting to major regional hubs.</p>
+        <a href="https://www.maersk.com/tracking/" target="_blank" class="carrier-link">Track Shipment ↗</a>
+      </div>
+      <div class="carrier-card grim fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <span class="carrier-flag">🇮🇹</span>
+        <div class="carrier-name">Grimaldi</div>
+        <p>Grimaldi Lines specializes in RoRo and multipurpose cargo services to West Africa, making it an ideal carrier choice for used vehicle exports on wheels.</p>
+        <a href="https://www.grimaldi-lines.com/" target="_blank" class="carrier-link">Grimaldi Lines ↗</a>
+      </div>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);text-align:center;">
+      ⓘ&nbsp; VShip Co maintains Negotiated Rate Arrangements (NRAs) with all four carriers. Tariff rates are published in accordance with FMC regulations at
+      <a href="http://rates.descartes.com/" target="_blank" style="color:var(--blue);">rates.descartes.com</a>.
+    </p>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section-inner">
+    <p class="section-label">Where We Ship</p>
+    <h2 class="section-title">Destinations We Serve</h2>
+    <hr class="gold-rule">
+    <p class="section-sub">VShip Co serves the major ports and commercial hubs across West Africa, handling everything from port logistics coordination to delivery documentation.</p>
+    <div class="dest-grid">
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇳🇬</span><div class="country">Nigeria</div><div class="port">Lagos (Apapa &amp; Tin Can)</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇬🇭</span><div class="country">Ghana</div><div class="port">Tema Port</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇨🇮</span><div class="country">Côte d'Ivoire</div><div class="port">Port of Abidjan</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇸🇳</span><div class="country">Senegal</div><div class="port">Port of Dakar</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇹🇬</span><div class="country">Togo</div><div class="port">Port of Lomé</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇧🇯</span><div class="country">Benin</div><div class="port">Port of Cotonou</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇬🇳</span><div class="country">Guinea</div><div class="port">Port of Conakry</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇸🇱</span><div class="country">Sierra Leone</div><div class="port">Port of Freetown</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇱🇷</span><div class="country">Liberia</div><div class="port">Port of Monrovia</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇨🇲</span><div class="country">Cameroon</div><div class="port">Port of Douala</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🇬🇦</span><div class="country">Gabon</div><div class="port">Port of Libreville</div></div>
+      <div class="dest-card fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;"><span class="flag">🌍</span><div class="country">Other Ports</div><div class="port">Contact us for details</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BILL OF LADING -->
+<section id="bol">
+  <div class="section-inner">
+    <p class="section-label">Legal Document</p>
+    <h2 class="section-title">Bill of Lading Terms &amp; Conditions</h2>
+    <hr class="gold-rule">
+    <p class="section-sub">All carriage arranged by VShip Co (the trade name of KOIL INC) is governed by the following Terms and Conditions. COGSA 46 U.S.C. §§1300–1315 applies to all carriage to and from the United States. Jurisdiction: U.S. District Court, Southern District of New York.</p>
+    <div class="bol-box">
+      <div class="bol-header">
+        <span>📜</span>
+        <h3>VSHIP CO — Bill of Lading Terms &amp; Conditions (Scroll to Read)</h3>
+      </div>
+      <div class="bol-scroll">
+        <div class="bol-clause">
+          <h4>(1) Clause Paramount</h4>
+          <p>All carriage under this Bill of Lading to or from the United States shall have effect subject to the provisions of the Carriage of Goods by Sea Act (COGSA), 46 U.S.C. §§1300–1315. Carriage to/from other States is governed by Hague or Hague-Visby Rules as applicable. These provisions apply from the time goods are in the custody of the Carrier through delivery.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(2) Definitions</h4>
+          <p><strong>"VSHIP CO"</strong> is the trade name of KOIL INC. <strong>"Carrier"</strong> means VSHIP CO, on whose behalf this Bill of Lading has been signed. <strong>"Merchant"</strong> includes the Shipper, Receiver, Consignor, Consignee, Holder, and any person with a present or future interest in the Goods.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(3) Subcontracting</h4>
+          <p>Carrier may subcontract the whole or any part of the handling, storage, or carriage of the goods. All subcontractors, servants and agents are entitled to the same rights, exemptions and immunities as Carrier under this Bill of Lading.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(4) Route of Transport</h4>
+          <p>Carrier is entitled to perform transport by any reasonable means, methods and routes. The Ship may adjust instruments, dry dock, shift berths, take on fuel, embark/disembark persons, carry hazardous goods, and save life or property. Resulting delays are not deemed a deviation.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(5) Hindrances Affecting Performance</h4>
+          <p>If performance is affected by any hindrance, risk, delay, or disadvantage of any kind (including strikes), Carrier may treat the contract as terminated and place goods at Merchant's disposal at any safe location, or deliver at destination. Full freight shall be earned in either case.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(6) Basic Liability</h4>
+          <p>Carrier is liable for loss or damage between taking custody and delivery, but not for consequential or special damages. Carrier is not liable for acts of the Merchant, inherent vice, insufficient packaging, fire (unless caused by Carrier's fault), or events Carrier could not avoid through due diligence.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(7) Compensation for Loss and Damage</h4>
+          <p>Carrier's liability is limited to <strong>US$500 per package</strong> or per customary freight unit under COGSA. For Shipper-packed containers, liability is limited to US$500 per container. Carrier may replace or repair damaged goods. Higher declared value coverage requires written declaration and additional freight payment prior to shipment.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(8) Description of Goods / U.S. Customs</h4>
+          <p>Carrier is responsible for transmitting AMS/AES data to U.S. Customs and Border Protection. Merchant warrants the accuracy of all descriptions, weights, seal numbers, and shipper/consignee identities, and shall indemnify Carrier for any inaccuracy penalties.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(9–10) Containers</h4>
+          <p>Merchant is liable for damage to Carrier equipment while in Merchant's control. For Shipper-packed containers, delivery with seals intact constitutes full performance. Carrier may inspect containers at any time at Merchant's expense.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(11) Dangerous Goods</h4>
+          <p>Hazardous goods require prior written application and Carrier acceptance. Merchant must mark packages per law and submit all required documentation. Carrier may dispose of unauthorized dangerous goods without compensation.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(12) Deck Cargo</h4>
+          <p>Carrier may stow cargo on or below deck. On-deck cargo notation on the face of the B/L relieves Carrier of liability for non-delivery, delay, or loss except as provided by law.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(15) Notice of Claim</h4>
+          <p>Written notice of claims must be given before or at the time of removal at port of discharge. For non-apparent damage, notice must be given within <strong>3 days</strong> of delivery. Suit must be brought within <strong>1 year</strong> of delivery or scheduled delivery date.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(16) Freight and Charges</h4>
+          <p>Freight is earned on receipt of goods regardless of loss. Payment is due in full without offset or deduction. Interest accrues at 1% per month. Shipper, Consignee, and all parties are jointly and severally liable for all freight and charges. Overcharge claims are time-barred after 5 months.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(17) Lien</h4>
+          <p>Carrier holds a general lien on all Merchant property in its possession for unpaid charges. After 30 days of non-payment, Carrier may sell goods at public or private auction following 10 days' written notice.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(19) Jurisdiction</h4>
+          <p>The <strong>U.S. District Court, Southern District of New York</strong> has exclusive jurisdiction over all disputes. New York State law applies except as otherwise provided. Each party submits to personal jurisdiction of the Southern District.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(20) General Average</h4>
+          <p>General Average shall be adjusted at New York under the <strong>York-Antwerp Rules 1994</strong>. Merchant shall contribute to all General Average sacrifices, losses, or expenses, and shall pay any salvage or special charges incurred with respect to the goods.</p>
+        </div>
+        <div class="bol-clause">
+          <h4>(22) Carriers' Tariffs</h4>
+          <p>All carriage is subject to Carrier's published tariff, available free of charge at <a href="http://rates.descartes.com/" target="_blank" style="color:var(--blue);">rates.descartes.com</a>, as filed with the U.S. Federal Maritime Commission. Negotiated Rate Arrangements (NRAs) may be entered in lieu of tariff rates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGULATIONS -->
+<section id="regulations">
+  <div class="section-inner">
+    <p class="section-label">Stay Informed</p>
+    <h2 class="section-title">Regulations &amp; Resources</h2>
+    <hr class="gold-rule">
+    <p class="section-sub">VShip Co understands the importance of keeping our customers informed of current regulations. Please refer to the following official and industry resources to stay updated with requirements in the ever-changing logistics industry.</p>
+    <div class="reg-grid">
+      <div class="reg-group fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <h3>🏛️ Regulatory Websites</h3>
+        <ul>
+          <li><a href="https://www.cbp.gov/" target="_blank">U.S. Customs and Border Protection</a></li>
+          <li><a href="https://www.fmc.gov/" target="_blank">U.S. Federal Maritime Commission</a></li>
+          <li><a href="https://www.ita.doc.gov/" target="_blank">U.S. Dept. of Commerce — ITA</a></li>
+          <li><a href="https://www.dot.gov/" target="_blank">U.S. Department of Transportation</a></li>
+          <li><a href="https://www.export.gov/" target="_blank">U.S. Government Export Portal</a></li>
+          <li><a href="https://www.state.gov/" target="_blank">U.S. State Department</a></li>
+          <li><a href="https://www.usitc.gov/" target="_blank">U.S. International Trade Commission</a></li>
+          <li><a href="https://aesdirect.census.gov/" target="_blank">AES Direct — U.S. Census Bureau</a></li>
+        </ul>
+      </div>
+      <div class="reg-group fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <h3>📰 Logistics News</h3>
+        <ul>
+          <li><a href="https://www.ajot.com/" target="_blank">American Journal of Transportation</a></li>
+          <li><a href="https://www.americanshipper.com/" target="_blank">American Shipper</a></li>
+          <li><a href="https://www.worldtrademag.com/" target="_blank">World Trade Magazine</a></li>
+        </ul>
+        <h3 style="margin-top:1.5rem">💱 Currency Tools</h3>
+        <ul>
+          <li><a href="https://www.xe.com/ucc" target="_blank">XE Universal Currency Converter</a></li>
+        </ul>
+      </div>
+      <div class="reg-group fade-up" style="opacity: 1; transform: none; transition: opacity 0.6s, transform 0.6s;">
+        <h3>📡 Carrier Shipment Tracking</h3>
+        <ul>
+          <li><a href="https://www.cma-cgm.com/" target="_blank">CMA CGM Tracking</a></li>
+          <li><a href="https://www.maersk.com/tracking/" target="_blank">Maersk Line Tracking</a></li>
+          <li><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC Track a Shipment</a></li>
+          <li><a href="https://www.grimaldi-lines.com/" target="_blank">Grimaldi Lines</a></li>
+        </ul>
+        <h3 style="margin-top:1.5rem">📋 Tariff Publication</h3>
+        <ul>
+          <li><a href="http://rates.descartes.com/" target="_blank">VShip Co Tariff (Descartes)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact Information</h2>
+    <hr class="gold-rule">
+    <div class="contact-grid">
+      <div>
+        <p class="section-sub" style="margin-bottom:0;">Our team is available Monday through Friday to assist with quotes, bookings, documentation, and any questions about your export shipment.</p>
+        <ul class="contact-info-list">
+          <li>
+            <span class="ci-icon">📞</span>
+            <div><strong>Telephone</strong><span>718-706-8566</span></div>
+          </li>
+          <li>
+            <span class="ci-icon">📠</span>
+            <div><strong>Fax</strong><span>718-706-8577</span></div>
+          </li>
+          <li>
+            <span class="ci-icon">✉️</span>
+            <div><strong>Email</strong><a href="mailto:Bindu@vship2000.com">Bindu@vship2000.com</a></div>
+          </li>
+          <li>
+            <span class="ci-icon">📍</span>
+            <div><strong>Office Address</strong><span>36-36 33rd Street, Ste 405<br>Long Island City, NY 11106</span></div>
+          </li>
+          <li>
+            <span class="ci-icon">🕐</span>
+            <div><strong>Business Hours</strong><span>Monday – Friday, 9:00 AM – 5:30 PM EST</span></div>
+          </li>
+          <li>
+            <span class="ci-icon">🏛️</span>
+            <div><strong>FMC License</strong><span>Licensed NVOCC / OTI — Regulated by the U.S. Federal Maritime Commission</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="cf-fname" name="first-name" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="cf-lname" name="last-name" placeholder="Doe">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="cf-email" name="email" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="cf-phone" name="phone" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="cf-subject" name="subject">
+            <option value="">— Select —</option>
+            <option>Freight Quote Request</option>
+            <option>Vehicle Export Inquiry</option>
+            <option>Bill of Lading Question</option>
+            <option>Shipment Tracking</option>
+            <option>Customs / CBP Question</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="cf-msg" name="message" placeholder="Describe your shipment, origin, destination, and vehicle details..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+        <p id="form-msg">✅ Thank you! We will respond within 1 business day.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="./index_files/VShip-logo-1024px-transparent.png" onerror="this.style.display='none'" alt="VShip Logo" style="display: none;">
+      <p>VShip Co — the trade name of KOIL INC — is a U.S. Federal Maritime Commission licensed Non-Vessel Operating Common Carrier (NVOCC) and Ocean Transportation Intermediary (OTI) specializing in used vehicle exports to West Africa.</p>
+      <p class="fmc-note">📋 FMC Licensed NVOCC / OTI &nbsp;|&nbsp; CBP Compliant &nbsp;|&nbsp; COGSA Governed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="./index.html#services" onclick="scrollToSection('services');return false;">Services</a></li>
+        <li><a href="./index.html#carriers" onclick="scrollToSection('carriers');return false;">Carriers</a></li>
+        <li><a href="./index.html#destinations" onclick="scrollToSection('destinations');return false;">Destinations</a></li>
+        <li><a href="./index.html#bol" onclick="scrollToSection('bol');return false;">Bill of Lading Terms</a></li>
+        <li><a href="./index.html#regulations" onclick="scrollToSection('regulations');return false;">Regulations</a></li>
+        <li><a href="./index.html#contact" onclick="scrollToSection('contact');return false;">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Carriers</h4>
+      <ul>
+        <li><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC Tracking</a></li>
+        <li><a href="https://www.cma-cgm.com/" target="_blank">CMA CGM Tracking</a></li>
+        <li><a href="https://www.maersk.com/tracking/" target="_blank">Maersk Tracking</a></li>
+        <li><a href="https://www.grimaldi-lines.com/" target="_blank">Grimaldi Lines</a></li>
+        <li><a href="http://rates.descartes.com/" target="_blank">Tariff Rates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Regulation Links</h4>
+      <ul>
+        <li><a href="https://www.cbp.gov/" target="_blank">CBP</a></li>
+        <li><a href="https://www.fmc.gov/" target="_blank">FMC</a></li>
+        <li><a href="https://www.dot.gov/" target="_blank">DOT</a></li>
+        <li><a href="https://www.export.gov/" target="_blank">Export.gov</a></li>
+        <li><a href="https://aesdirect.census.gov/" target="_blank">AES Direct</a></li>
+        <li><a href="https://www.xe.com/ucc" target="_blank">Currency Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>VShip Documents Upload App</h4>
+      <ul>
+        <li><a href="./Privacy Policy.html">App Privacy Policy</a></li>
+        <li><a href="./Terms and Conditions.html">App Terms of Service</a></li>
+        <li><a href="./Account Deletion.html">Account Deletion</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2000–2026 VShip Co · KOIL INC · All Rights Reserved · 36-36 33rd St, Ste 405, Long Island City, NY 11106</p>
+    <div class="footer-bottom-links">
+      <a href="#" onclick="openModal('terms');return false;">Terms of Service</a>
+      <a href="#" onclick="openModal('privacy');return false;">Privacy Policy</a>
+      <a href="./index.html#bol" onclick="scrollToSection('bol');return false;">Bill of Lading Terms</a>
+      <a href="./index.html#regulations" onclick="scrollToSection('regulations');return false;">Regulations</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: Terms of Service -->
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Terms of Service</h2>
+      <button class="modal-close" onclick="closeModal('terms')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Acceptance of Terms</h3>
+      <p>By using the services of VShip Co (KOIL INC), you agree to be bound by these Terms of Service and all applicable federal regulations governing ocean transportation, including those administered by the U.S. Federal Maritime Commission (FMC) and U.S. Customs and Border Protection (CBP).</p>
+      <h3>Services Description</h3>
+      <p>VShip Co acts as a licensed NVOCC/OTI arranging ocean freight transportation. We issue House Bills of Lading governed by COGSA (46 U.S.C. §§1300–1315) and FMC-published tariffs. VShip Co is not a vessel operator and arranges carriage through VOCs.</p>
+      <h3>Shipper Obligations</h3>
+      <p>The Shipper warrants the accuracy of all commodity descriptions, vehicle identification numbers (VINs), weights, and export documentation, including original vehicle titles cleared with CBP. The Shipper is responsible for compliance with all U.S. export control laws and the Foreign Trade Regulations (15 CFR Part 30).</p>
+      <h3>Liability</h3>
+      <p>Carrier liability is governed by COGSA and limited to US$500 per package unless a higher value is declared in writing and additional freight is paid. VShip Co is not liable for consequential or special damages under any circumstances.</p>
+      <h3>Governing Law</h3>
+      <p>These Terms are governed by the laws of the State of New York. Disputes shall be resolved in the U.S. District Court, Southern District of New York. Suit must be filed within one (1) year of the date of delivery or scheduled delivery.</p>
+      <h3>Tariff</h3>
+      <p>All charges are subject to VShip Co's FMC-published tariff available at <a href="http://rates.descartes.com/" target="_blank" style="color:var(--blue);">rates.descartes.com</a>. Negotiated Rate Arrangements (NRAs) may be entered separately.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Privacy Policy -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Privacy Policy</h2>
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Information We Collect</h3>
+      <p>VShip Co collects personal and business information necessary to arrange ocean freight transportation, including names, addresses, phone numbers, email addresses, vehicle identification numbers (VINs), and export documentation as required by U.S. CBP and FMC regulations.</p>
+      <h3>Use of Information</h3>
+      <p>Information collected is used solely to arrange transportation, comply with federal export and customs requirements (including AES/EEI filing), issue Bills of Lading, and communicate with shippers and consignees regarding their shipments. We do not sell personal information to third parties.</p>
+      <h3>Regulatory Disclosure</h3>
+      <p>We are required by U.S. law to transmit shipper and consignee information to U.S. Customs and Border Protection (CBP) prior to vessel loading, as mandated under the CBP AMS (Automated Manifest System) and AES Direct (Electronic Export Information) programs.</p>
+      <h3>Data Retention</h3>
+      <p>Shipping and transaction records are retained for a minimum of five (5) years in accordance with FMC regulations and standard industry practice.</p>
+      <h3>Security</h3>
+      <p>VShip Co uses commercially reasonable measures to protect your data. However, no data transmission over the internet is 100% secure. Please contact us by phone for highly sensitive information.</p>
+      <h3>Contact</h3>
+      <p>For privacy questions, contact us at <a href="mailto:Bindu@vship2000.com" style="color:var(--blue);">Bindu@vship2000.com</a> or by phone at 718-706-8566.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Anchor scroll — most reliable cross-browser method
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (el) { el.scrollIntoView(); }
+  }
+
+  // Modal open/close
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.onload = function() {
+    // Close modals when clicking backdrop
+    var modals = document.getElementsByClassName('modal-overlay');
+    for (var i = 0; i < modals.length; i++) {
+      modals[i].addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+    // Fade-up scroll animations
+    var fadeEls = document.getElementsByClassName('fade-up');
+    if (window.IntersectionObserver) {
+      for (var j = 0; j < fadeEls.length; j++) {
+        fadeEls[j].style.opacity = '0';
+        fadeEls[j].style.transform = 'translateY(20px)';
+        fadeEls[j].style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }
+      var obs = new IntersectionObserver(function(entries) {
+        for (var k = 0; k < entries.length; k++) {
+          if (entries[k].isIntersecting) {
+            entries[k].target.style.opacity = '1';
+            entries[k].target.style.transform = 'none';
+            obs.unobserve(entries[k].target);
+          }
+        }
+      }, { threshold: 0.05 });
+      for (var l = 0; l < fadeEls.length; l++) {
+        obs.observe(fadeEls[l]);
+      }
+    }
+  };
+  // Contact form submit — posts to Netlify Forms via AJAX so the page doesn't reload
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form  = this;
+    var fname = document.getElementById('cf-fname').value.trim();
+    var email = document.getElementById('cf-email').value.trim();
+    var msg   = document.getElementById('cf-msg').value.trim();
+    if (!fname || !email || !msg) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+    var btn = form.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      document.getElementById('form-msg').style.display = 'block';
+      form.reset();
+    })
+    .catch(function() {
+      alert('Sorry, your message could not be sent. Please try again or email us directly at Bindu@vship2000.com.');
+    })
+    .then(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
+  });
+</script>
+
+
+</body></html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Deletion — VShip Document Upload App</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0d2250;
+    --blue:    #1a45a8;
+    --gold:    #f5a800;
+    --gold-lt: #ffc93c;
+    --white:   #ffffff;
+    --off:     #f4f6fb;
+    --text:    #1c2540;
+    --muted:   #5a6480;
+    --border:  #dde3f0;
+    --shadow:  0 4px 24px rgba(13,34,80,.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--white); }
+
+  /* ── TOP BANNER ─────────────────────────────── */
+  .top-banner {
+    background: var(--navy); color: rgba(255,255,255,.75);
+    font-size: .78rem; letter-spacing: .04em;
+    text-align: center; padding: .45rem 1rem;
+  }
+  .top-banner a { color: var(--gold); text-decoration: none; }
+  .top-banner a:hover { text-decoration: underline; }
+
+  /* ── HEADER ─────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    border-bottom: 3px solid var(--gold);
+    box-shadow: var(--shadow);
+  }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: .6rem 2rem; gap: 1rem;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: .9rem; text-decoration: none; }
+  .logo-wrap img { height: 58px; width: auto; }
+  .logo-text { line-height: 1.1; }
+  .logo-text .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem; font-weight: 800; color: var(--navy); letter-spacing: .02em;
+  }
+  .logo-text .tagline {
+    font-size: .7rem; color: var(--muted);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
+  }
+
+  nav ul { list-style: none; display: flex; gap: .15rem; align-items: center; }
+  nav a {
+    display: block; padding: .5rem .85rem;
+    font-size: .84rem; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--navy); border-radius: 4px;
+    transition: background .18s, color .18s;
+  }
+  nav a:hover { background: var(--off); color: var(--blue); }
+  nav .cta-btn { background: var(--gold); color: var(--navy); border-radius: 4px; padding: .5rem 1.1rem; }
+  nav .cta-btn:hover { background: var(--gold-lt); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .4rem; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: .25s; }
+  #nav-toggle { display: none; }
+
+  /* ── CONTENT PAGE ────────────────────────────── */
+  .doc-hero {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    border-bottom: 3px solid var(--gold);
+  }
+  .doc-hero-inner { max-width: 860px; margin: 0 auto; }
+  .doc-hero .eyebrow {
+    font-size: .7rem; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: .6rem;
+  }
+  .doc-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800; color: var(--white); line-height: 1.1;
+  }
+  .doc-hero .doc-meta {
+    margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.5);
+  }
+
+  .doc-body {
+    max-width: 860px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .doc-body > p:first-child { margin-top: 0; }
+
+  .doc-body h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    letter-spacing: .04em; margin-top: 2.5rem; margin-bottom: .6rem;
+    border-bottom: 2px solid var(--gold); padding-bottom: .35rem;
+  }
+  .doc-body h3 {
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-top: 1.5rem; margin-bottom: .4rem; letter-spacing: .02em;
+  }
+  .doc-body p {
+    font-size: .9rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: .9rem;
+  }
+  .doc-body ul {
+    margin: .5rem 0 1rem 1.4rem;
+  }
+  .doc-body li {
+    font-size: .9rem; color: var(--muted); line-height: 1.7;
+    margin-bottom: .4rem;
+  }
+  .doc-body a { color: var(--blue); }
+  .doc-body a:hover { color: var(--gold); }
+  .doc-body strong { color: var(--text); }
+
+  /* Direct-email callout */
+  .email-callout {
+    background: var(--off); border: 1px solid var(--border);
+    border-left: 3px solid var(--gold); border-radius: 6px;
+    padding: 1.3rem 1.5rem; margin: 1.2rem 0 0;
+  }
+  .email-callout p { margin-bottom: .35rem; }
+  .email-callout a { font-weight: 600; }
+
+  /* ── FORM (mirrors index.html contact form) ──── */
+  .deletion-form {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 8px; padding: 2rem; margin-top: 1.2rem;
+    box-shadow: var(--shadow);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block; font-size: .75rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: .35rem;
+  }
+  .form-group input {
+    width: 100%; padding: .65rem .9rem;
+    border: 1px solid var(--border); border-radius: 4px;
+    font-family: 'Barlow', sans-serif; font-size: .88rem; color: var(--text);
+    background: var(--white); transition: border-color .15s;
+    outline: none;
+  }
+  .form-group input:focus { border-color: var(--blue); }
+  .btn-submit {
+    width: 100%; background: var(--navy); color: var(--white);
+    font-family: 'Barlow', sans-serif; font-weight: 700;
+    font-size: .88rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: .85rem; border: none; border-radius: 4px; cursor: pointer;
+    transition: background .18s;
+  }
+  .btn-submit:hover { background: var(--blue); }
+  .btn-submit:disabled { opacity: .6; cursor: default; }
+  #form-msg {
+    margin-top: .7rem; font-size: .85rem; color: green;
+    text-align: center; display: none;
+  }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer { background: var(--navy); color: rgba(255,255,255,.65); }
+  .footer-main {
+    max-width: 1280px; margin: 0 auto;
+    padding: 3.5rem 2rem 2.5rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem;
+  }
+  .footer-brand img { height: 50px; margin-bottom: .9rem; }
+  .footer-brand p {
+    font-family: 'Source Serif 4', serif; font-weight: 300;
+    font-size: .83rem; line-height: 1.7; max-width: 280px;
+    color: rgba(255,255,255,.5);
+  }
+  .footer-brand .fmc-note {
+    margin-top: .9rem; font-size: .72rem;
+    color: var(--gold); letter-spacing: .06em; font-family: 'Barlow', sans-serif;
+  }
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .9rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: .9rem; border-bottom: 1px solid rgba(255,255,255,.1);
+    padding-bottom: .4rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: .4rem; }
+  .footer-col a { font-size: .82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    max-width: 1280px; margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: .8rem;
+  }
+  .footer-bottom p { font-size: .75rem; }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a {
+    font-size: .75rem; color: rgba(255,255,255,.4);
+    text-decoration: none; transition: color .15s;
+  }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* ── MODAL ───────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(13,34,80,.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white); border-radius: 8px;
+    max-width: 740px; width: 100%; max-height: 85vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  }
+  .modal-head {
+    background: var(--navy); color: var(--white);
+    padding: 1.1rem 1.5rem; border-radius: 8px 8px 0 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem; font-weight: 700; letter-spacing: .05em;
+  }
+  .modal-close {
+    background: none; border: none; color: var(--white);
+    font-size: 1.4rem; cursor: pointer; line-height: 1; padding: .2rem .4rem;
+  }
+  .modal-body { overflow-y: auto; padding: 1.5rem 2rem; }
+  .modal-body p, .modal-body li {
+    font-size: .85rem; color: var(--muted); line-height: 1.75;
+  }
+  .modal-body h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem;
+    font-weight: 700; color: var(--navy); text-transform: uppercase;
+    letter-spacing: .06em; margin: 1.2rem 0 .4rem;
+    border-bottom: 1px solid var(--border); padding-bottom: .3rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 960px) {
+    .footer-main { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    nav ul { display: none; flex-direction: column; width: 100%; }
+    #nav-toggle:checked ~ ul { display: flex; }
+    .hamburger { display: flex; }
+    .header-inner { flex-wrap: wrap; }
+    nav { width: 100%; order: 3; }
+    nav ul { background: var(--white); border-top: 1px solid var(--border); padding: .5rem 0; }
+    nav a { padding: .6rem 1.2rem; }
+    .footer-main { grid-template-columns: 1fr; }
+    .doc-body { padding: 2rem 1.2rem 4rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  FMC Licensed NVOCC · OTI Bonded Carrier &nbsp;|&nbsp; Used Automobile Export Specialists to West Africa &nbsp;|&nbsp;
+  <a href="https://www.fmc.gov/" target="_blank">Regulated by the U.S. Federal Maritime Commission</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="./index.html" class="logo-wrap">
+      <img src="./logoIG.svg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="VShip Logo" style="display: flex;">
+      <div class="logo-text">
+        <div class="brand">VSHIP CO</div>
+        <div class="tagline">International Ocean Freight</div>
+      </div>
+    </a>
+    <nav>
+      <label for="nav-toggle" class="hamburger">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="nav-toggle">
+      <ul>
+        <li><a href="./index.html#services">Services</a></li>
+        <li><a href="./index.html#carriers">Carriers</a></li>
+        <li><a href="./index.html#destinations">Destinations</a></li>
+        <li><a href="./index.html#bol">Bill of Lading</a></li>
+        <li><a href="./index.html#regulations">Regulations</a></li>
+        <li><a href="./index.html#contact" class="cta-btn">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="doc-hero">
+  <div class="doc-hero-inner">
+    <p class="eyebrow">VShip Documents Upload App</p>
+    <h1>Account Deletion</h1>
+    <p class="doc-meta">Request deletion of your VShip Document Upload account</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="doc-body">
+<p>You have the right to delete your VShip Document Upload account and the personal information associated with it. To request deletion, you must contact VShip using <strong>either</strong> of the two methods below. We will verify your identity using information associated with your account before processing your request.</p>
+<p>Once your request is verified, we will delete your account and associated personal information, except where we are required or permitted under applicable law to retain certain information (for example, to comply with legal obligations or to establish or defend legal claims). Residual copies may remain in routine encrypted backups for a limited period and are not restored except for security, disaster recovery, or legal compliance.</p>
+
+<h2>Option 1 — Submit a Deletion Request</h2>
+<p>Complete the form below and our team will process your account deletion request. Please use the same details associated with your account so we can locate and verify it.</p>
+
+<form name="account-deletion" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="deletion-form" class="deletion-form">
+  <input type="hidden" name="form-name" value="account-deletion">
+  <p style="display:none;"><label>Don&#39;t fill this out if you&#39;re human: <input name="bot-field"></label></p>
+  <div class="form-row">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" id="ad-fname" name="first-name" placeholder="John">
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" id="ad-lname" name="last-name" placeholder="Doe">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" id="ad-email" name="email" placeholder="you@email.com">
+  </div>
+  <div class="form-group">
+    <label>Company</label>
+    <input type="text" id="ad-company" name="company" placeholder="Your company name">
+  </div>
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input type="tel" id="ad-phone" name="phone" placeholder="+1 (555) 000-0000">
+  </div>
+  <button type="submit" class="btn-submit">Submit Deletion Request</button>
+  <p id="form-msg">✅ Thank you! Your account deletion request has been received. We will respond within 1 business day.</p>
+</form>
+
+<h2>Option 2 — Email Us Directly</h2>
+<p>You may also request account deletion by emailing VShip directly. Please include your first and last name, the email address associated with your account, your company, and your phone number so we can locate and verify your account.</p>
+<div class="email-callout">
+  <p><strong>Email:</strong> <a href="mailto:admin@vship2000.com?subject=Account%20Deletion%20Request">admin@vship2000.com</a></p>
+  <p><strong>Phone:</strong> +1 (718) 706-8566</p>
+  <p><strong>Mail:</strong> VShip, 3636 33rd Street, Astoria, NY 11106, United States</p>
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="./index_files/VShip-logo-1024px-transparent.png" onerror="this.style.display='none'" alt="VShip Logo" style="display: none;">
+      <p>VShip Co — the trade name of KOIL INC — is a U.S. Federal Maritime Commission licensed Non-Vessel Operating Common Carrier (NVOCC) and Ocean Transportation Intermediary (OTI) specializing in used vehicle exports to West Africa.</p>
+      <p class="fmc-note">📋 FMC Licensed NVOCC / OTI &nbsp;|&nbsp; CBP Compliant &nbsp;|&nbsp; COGSA Governed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="./index.html#services">Services</a></li>
+        <li><a href="./index.html#carriers">Carriers</a></li>
+        <li><a href="./index.html#destinations">Destinations</a></li>
+        <li><a href="./index.html#bol">Bill of Lading Terms</a></li>
+        <li><a href="./index.html#regulations">Regulations</a></li>
+        <li><a href="./index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Carriers</h4>
+      <ul>
+        <li><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC Tracking</a></li>
+        <li><a href="https://www.cma-cgm.com/" target="_blank">CMA CGM Tracking</a></li>
+        <li><a href="https://www.maersk.com/tracking/" target="_blank">Maersk Tracking</a></li>
+        <li><a href="https://www.grimaldi-lines.com/" target="_blank">Grimaldi Lines</a></li>
+        <li><a href="http://rates.descartes.com/" target="_blank">Tariff Rates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Regulation Links</h4>
+      <ul>
+        <li><a href="https://www.cbp.gov/" target="_blank">CBP</a></li>
+        <li><a href="https://www.fmc.gov/" target="_blank">FMC</a></li>
+        <li><a href="https://www.dot.gov/" target="_blank">DOT</a></li>
+        <li><a href="https://www.export.gov/" target="_blank">Export.gov</a></li>
+        <li><a href="https://aesdirect.census.gov/" target="_blank">AES Direct</a></li>
+        <li><a href="https://www.xe.com/ucc" target="_blank">Currency Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>VShip Documents Upload App</h4>
+      <ul>
+        <li><a href="./Privacy Policy.html">App Privacy Policy</a></li>
+        <li><a href="./Terms and Conditions.html">App Terms of Service</a></li>
+        <li><a href="./Account Deletion.html">Account Deletion</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2000–2026 VShip Co · KOIL INC · All Rights Reserved · 36-36 33rd St, Ste 405, Long Island City, NY 11106</p>
+    <div class="footer-bottom-links">
+      <a href="#" onclick="openModal('terms');return false;">Terms of Service</a>
+      <a href="#" onclick="openModal('privacy');return false;">Privacy Policy</a>
+      <a href="./index.html#bol">Bill of Lading Terms</a>
+      <a href="./index.html#regulations">Regulations</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: Terms of Service -->
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Terms of Service</h2>
+      <button class="modal-close" onclick="closeModal('terms')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Acceptance of Terms</h3>
+      <p>By using the services of VShip Co (KOIL INC), you agree to be bound by these Terms of Service and all applicable federal regulations governing ocean transportation, including those administered by the U.S. Federal Maritime Commission (FMC) and U.S. Customs and Border Protection (CBP).</p>
+      <h3>Services Description</h3>
+      <p>VShip Co acts as a licensed NVOCC/OTI arranging ocean freight transportation. We issue House Bills of Lading governed by COGSA (46 U.S.C. §§1300–1315) and FMC-published tariffs. VShip Co is not a vessel operator and arranges carriage through VOCs.</p>
+      <h3>Shipper Obligations</h3>
+      <p>The Shipper warrants the accuracy of all commodity descriptions, vehicle identification numbers (VINs), weights, and export documentation, including original vehicle titles cleared with CBP. The Shipper is responsible for compliance with all U.S. export control laws and the Foreign Trade Regulations (15 CFR Part 30).</p>
+      <h3>Liability</h3>
+      <p>Carrier liability is governed by COGSA and limited to US$500 per package unless a higher value is declared in writing and additional freight is paid. VShip Co is not liable for consequential or special damages under any circumstances.</p>
+      <h3>Governing Law</h3>
+      <p>These Terms are governed by the laws of the State of New York. Disputes shall be resolved in the U.S. District Court, Southern District of New York. Suit must be filed within one (1) year of the date of delivery or scheduled delivery.</p>
+      <h3>Tariff</h3>
+      <p>All charges are subject to VShip Co's FMC-published tariff available at <a href="http://rates.descartes.com/" target="_blank" style="color:var(--blue);">rates.descartes.com</a>. Negotiated Rate Arrangements (NRAs) may be entered separately.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Privacy Policy -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Privacy Policy</h2>
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Information We Collect</h3>
+      <p>VShip Co collects personal and business information necessary to arrange ocean freight transportation, including names, addresses, phone numbers, email addresses, vehicle identification numbers (VINs), and export documentation as required by U.S. CBP and FMC regulations.</p>
+      <h3>Use of Information</h3>
+      <p>Information collected is used solely to arrange transportation, comply with federal export and customs requirements (including AES/EEI filing), issue Bills of Lading, and communicate with shippers and consignees regarding their shipments. We do not sell personal information to third parties.</p>
+      <h3>Regulatory Disclosure</h3>
+      <p>We are required by U.S. law to transmit shipper and consignee information to U.S. Customs and Border Protection (CBP) prior to vessel loading, as mandated under the CBP AMS (Automated Manifest System) and AES Direct (Electronic Export Information) programs.</p>
+      <h3>Data Retention</h3>
+      <p>Shipping and transaction records are retained for a minimum of five (5) years in accordance with FMC regulations and standard industry practice.</p>
+      <h3>Security</h3>
+      <p>VShip Co uses commercially reasonable measures to protect your data. However, no data transmission over the internet is 100% secure. Please contact us by phone for highly sensitive information.</p>
+      <h3>Contact</h3>
+      <p>For privacy questions, contact us at <a href="mailto:Bindu@vship2000.com" style="color:var(--blue);">Bindu@vship2000.com</a> or by phone at 718-706-8566.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal open/close — mirrors index.html
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('load', function() {
+    // Close modals when clicking backdrop
+    var modals = document.getElementsByClassName('modal-overlay');
+    for (var i = 0; i < modals.length; i++) {
+      modals[i].addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  });
+</script>
+
+<script>
+  // Account deletion form submit — posts to Netlify Forms via AJAX so the page doesn't reload
+  document.getElementById('deletion-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form  = this;
+    var fname = document.getElementById('ad-fname').value.trim();
+    var lname = document.getElementById('ad-lname').value.trim();
+    var email = document.getElementById('ad-email').value.trim();
+    if (!fname || !lname || !email) {
+      alert('Please fill in your first name, last name, and email address.');
+      return;
+    }
+    var btn = form.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Submission failed');
+      document.getElementById('form-msg').style.display = 'block';
+      form.reset();
+    })
+    .catch(function() {
+      alert('Sorry, your request could not be sent. Please try again or email us directly at admin@vship2000.com.');
+    })
+    .then(function() {
+      btn.disabled = false;
+      btn.textContent = 'Submit Deletion Request';
+    });
+  });
+</script>
+
+</body>
+</html>

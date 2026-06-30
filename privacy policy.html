@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — VShip Document Upload App</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0d2250;
+    --blue:    #1a45a8;
+    --gold:    #f5a800;
+    --gold-lt: #ffc93c;
+    --white:   #ffffff;
+    --off:     #f4f6fb;
+    --text:    #1c2540;
+    --muted:   #5a6480;
+    --border:  #dde3f0;
+    --shadow:  0 4px 24px rgba(13,34,80,.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--white); }
+
+  /* ── TOP BANNER ─────────────────────────────── */
+  .top-banner {
+    background: var(--navy); color: rgba(255,255,255,.75);
+    font-size: .78rem; letter-spacing: .04em;
+    text-align: center; padding: .45rem 1rem;
+  }
+  .top-banner a { color: var(--gold); text-decoration: none; }
+  .top-banner a:hover { text-decoration: underline; }
+
+  /* ── HEADER ─────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    border-bottom: 3px solid var(--gold);
+    box-shadow: var(--shadow);
+  }
+  .header-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: .6rem 2rem; gap: 1rem;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: .9rem; text-decoration: none; }
+  .logo-wrap img { height: 58px; width: auto; }
+  .logo-text { line-height: 1.1; }
+  .logo-text .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem; font-weight: 800; color: var(--navy); letter-spacing: .02em;
+  }
+  .logo-text .tagline {
+    font-size: .7rem; color: var(--muted);
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
+  }
+
+  nav ul { list-style: none; display: flex; gap: .15rem; align-items: center; }
+  nav a {
+    display: block; padding: .5rem .85rem;
+    font-size: .84rem; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--navy); border-radius: 4px;
+    transition: background .18s, color .18s;
+  }
+  nav a:hover { background: var(--off); color: var(--blue); }
+  nav .cta-btn { background: var(--gold); color: var(--navy); border-radius: 4px; padding: .5rem 1.1rem; }
+  nav .cta-btn:hover { background: var(--gold-lt); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .4rem; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: .25s; }
+  #nav-toggle { display: none; }
+
+  /* ── CONTENT PAGE ────────────────────────────── */
+  .doc-hero {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    border-bottom: 3px solid var(--gold);
+  }
+  .doc-hero-inner { max-width: 860px; margin: 0 auto; }
+  .doc-hero .eyebrow {
+    font-size: .7rem; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: .6rem;
+  }
+  .doc-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800; color: var(--white); line-height: 1.1;
+  }
+  .doc-hero .doc-meta {
+    margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.5);
+  }
+
+  .doc-body {
+    max-width: 860px; margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .doc-body h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem; font-weight: 800; color: var(--navy);
+    margin-bottom: .3rem; display: none;
+  }
+  .doc-body > p:first-child { margin-top: 0; }
+
+  .doc-body h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    letter-spacing: .04em; margin-top: 2.5rem; margin-bottom: .6rem;
+    border-bottom: 2px solid var(--gold); padding-bottom: .35rem;
+  }
+  .doc-body h3 {
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-top: 1.5rem; margin-bottom: .4rem; letter-spacing: .02em;
+  }
+  .doc-body h4 {
+    font-size: .88rem; font-weight: 700; color: var(--blue);
+    margin-top: 1.2rem; margin-bottom: .3rem; text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .doc-body p {
+    font-size: .9rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: .9rem;
+  }
+  .doc-body ul {
+    margin: .5rem 0 1rem 1.4rem;
+  }
+  .doc-body li {
+    font-size: .9rem; color: var(--muted); line-height: 1.7;
+    margin-bottom: .4rem;
+  }
+  .doc-body a { color: var(--blue); }
+  .doc-body a:hover { color: var(--gold); }
+  .doc-body strong { color: var(--text); }
+
+  /* ── CONTENT TABLES ──────────────────────────── */
+  .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+  .doc-body table {
+    width: 100%; border-collapse: collapse;
+    font-size: .82rem; min-width: 560px;
+  }
+  .doc-body th, .doc-body td {
+    border: 1px solid var(--border);
+    padding: .55rem .7rem; text-align: left;
+    vertical-align: top; line-height: 1.55;
+  }
+  .doc-body th {
+    background: #d5e1ec; color: var(--navy); font-weight: 700;
+  }
+  .doc-body td { color: var(--muted); }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer { background: var(--navy); color: rgba(255,255,255,.65); }
+  .footer-main {
+    max-width: 1280px; margin: 0 auto;
+    padding: 3.5rem 2rem 2.5rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem;
+  }
+  .footer-brand img { height: 50px; margin-bottom: .9rem; }
+  .footer-brand p {
+    font-family: 'Source Serif 4', serif; font-weight: 300;
+    font-size: .83rem; line-height: 1.7; max-width: 280px;
+    color: rgba(255,255,255,.5);
+  }
+  .footer-brand .fmc-note {
+    margin-top: .9rem; font-size: .72rem;
+    color: var(--gold); letter-spacing: .06em; font-family: 'Barlow', sans-serif;
+  }
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .9rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: .9rem; border-bottom: 1px solid rgba(255,255,255,.1);
+    padding-bottom: .4rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: .4rem; }
+  .footer-col a { font-size: .82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    max-width: 1280px; margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: .8rem;
+  }
+  .footer-bottom p { font-size: .75rem; }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a {
+    font-size: .75rem; color: rgba(255,255,255,.4);
+    text-decoration: none; transition: color .15s;
+  }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* ── MODAL ───────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(13,34,80,.7); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white); border-radius: 8px;
+    max-width: 740px; width: 100%; max-height: 85vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  }
+  .modal-head {
+    background: var(--navy); color: var(--white);
+    padding: 1.1rem 1.5rem; border-radius: 8px 8px 0 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem; font-weight: 700; letter-spacing: .05em;
+  }
+  .modal-close {
+    background: none; border: none; color: var(--white);
+    font-size: 1.4rem; cursor: pointer; line-height: 1; padding: .2rem .4rem;
+  }
+  .modal-body { overflow-y: auto; padding: 1.5rem 2rem; }
+  .modal-body p, .modal-body li {
+    font-size: .85rem; color: var(--muted); line-height: 1.75;
+  }
+  .modal-body h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem;
+    font-weight: 700; color: var(--navy); text-transform: uppercase;
+    letter-spacing: .06em; margin: 1.2rem 0 .4rem;
+    border-bottom: 1px solid var(--border); padding-bottom: .3rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 960px) {
+    .footer-main { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    nav ul { display: none; flex-direction: column; width: 100%; }
+    #nav-toggle:checked ~ ul { display: flex; }
+    .hamburger { display: flex; }
+    .header-inner { flex-wrap: wrap; }
+    nav { width: 100%; order: 3; }
+    nav ul { background: var(--white); border-top: 1px solid var(--border); padding: .5rem 0; }
+    nav a { padding: .6rem 1.2rem; }
+    .footer-main { grid-template-columns: 1fr; }
+    .doc-body { padding: 2rem 1.2rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  FMC Licensed NVOCC · OTI Bonded Carrier &nbsp;|&nbsp; Used Automobile Export Specialists to West Africa &nbsp;|&nbsp;
+  <a href="https://www.fmc.gov/" target="_blank">Regulated by the U.S. Federal Maritime Commission</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="./index.html" class="logo-wrap">
+      <img src="./logoIG.svg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="VShip Logo" style="display: flex;">
+      <div class="logo-text">
+        <div class="brand">VSHIP CO</div>
+        <div class="tagline">International Ocean Freight</div>
+      </div>
+    </a>
+    <nav>
+      <label for="nav-toggle" class="hamburger">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="nav-toggle">
+      <ul>
+        <li><a href="./index.html#services">Services</a></li>
+        <li><a href="./index.html#carriers">Carriers</a></li>
+        <li><a href="./index.html#destinations">Destinations</a></li>
+        <li><a href="./index.html#bol">Bill of Lading</a></li>
+        <li><a href="./index.html#regulations">Regulations</a></li>
+        <li><a href="./index.html#contact" class="cta-btn">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="doc-hero">
+  <div class="doc-hero-inner">
+    <p class="eyebrow">VShip Documents Upload App</p>
+    <h1>Privacy Policy</h1>
+    <p class="doc-meta">Last updated: June 9, 2026</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="doc-body">
+<p>This Privacy Policy explains how VShip (“VShip,” “we,” “us,” or “our”) uses personal data about you in connection with the VShip Document Upload application (the “App”), a tool for capturing, uploading, assembling, and transmitting export and shipping documents.</p>
+
+<h2>1. Specific provisions</h2>
+<p><strong>Data controller.</strong> The entity responsible for your personal information under this policy is VShip, 3636 33rd Street, Astoria, NY 11106, United States. Our contact details are in Section 11.</p>
+<p><strong>Personal information.</strong> In this policy, “personal information” means any information relating to an identified or identifiable individual, including information that would constitute “personal data” under the General Data Protection Regulation (GDPR) or other applicable data protection and privacy laws. The scope is broad and covers information in any form.</p>
+<p>This policy applies to the App. A more specific notice — such as your device’s camera or photo-library permission prompt — governs the activity it describes where it conflicts with this policy.</p>
+
+<h2>2. Protecting your personal data</h2>
+<p>VShip is based in the United States, and our servers and hosting infrastructure (Microsoft Azure) are located there. If you access the App from outside the United States, your personal information will be transferred to and processed in the United States. We protect it as described in this policy, including the transfer safeguards in Section 5.</p>
+
+<h2>3. Personal data we collect and how we use it</h2>
+<p>The table below sets out the categories of personal data we collect, what each includes, where it comes from, why we use it, and our legal basis. For each purpose we use only the data needed for it.</p>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>What it includes</th>
+      <th>Source</th>
+      <th>Purpose</th>
+      <th>Legal basis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Account and contact data</td>
+      <td>Full name, company name, email address, phone number</td>
+      <td>You, at registration or contact</td>
+      <td>Create and manage your account; authenticate you; respond to requests; send service and security messages</td>
+      <td>Performance of our agreement; our legitimate interest in supporting and securing the service</td>
+    </tr>
+    <tr>
+      <td>Submission data</td>
+      <td>The documents you upload (e.g., car titles, bills of sale, export powers of attorney) and any booking number you provide</td>
+      <td>You, via the submission feature</td>
+      <td>Receive, process, convert, assemble, store, and deliver your documents to the recipients you designate</td>
+      <td>Performance of our agreement</td>
+    </tr>
+    <tr>
+      <td>Camera and photo-library content</td>
+      <td>Photographs and document images you capture or select</td>
+      <td>Your device, with your permission</td>
+      <td>Assemble and deliver the images as part of your submission, and for no other purpose</td>
+      <td>Your consent (withdrawable in device settings); performance of our agreement</td>
+    </tr>
+    <tr>
+      <td>Usage and device data</td>
+      <td>Device identifiers, app/browser type, IP address, access times, diagnostic data; security logs</td>
+      <td>Collected automatically when you use the App</td>
+      <td>Keep the App secure; troubleshoot; detect and prevent misuse or fraud; analyze usage to improve reliability</td>
+      <td>Our legitimate interest in a secure, functioning service; legal obligation where applicable</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p><strong>Personal data of other people in your documents.</strong> The documents you upload frequently contain personal information about other people — for example, the names, addresses, signatures, and sometimes identification numbers of buyers, sellers, or signatories. You are responsible for ensuring you have the right to share that information with us. We process it only to provide the App’s document-handling features and for no independent purpose. We do not request payment-card or financial-account information and ask that you not upload it.</p>
+<p>We also use personal data to comply with legal obligations and to respond to lawful requests, using whatever data the obligation requires (legal basis: legal obligation). We do not sell your personal data, use it for cross-context behavioral advertising, or use uploaded document content to build advertising or unrelated profiles. These uses correspond to the business purposes enumerated under the CCPA/CPRA (Cal. Civ. Code § 1798.140(e)).</p>
+
+<h2>4. Sharing of personal data</h2>
+<p>We share personal information only where it is relevant and necessary to perform the activities described in this policy:</p>
+<ul>
+  <li><strong>Service providers (subprocessors)</strong> — cloud hosting and storage (Microsoft Azure), email-delivery, and similar vendors who process data on our behalf under contracts that require confidentiality and prohibit use for their own purposes.</li>
+  <li><strong>Our documentation team</strong> — submitted documents are delivered by email to our internal documentation team to perform the service you request. Authorized personnel may access individual submissions through an administrative portal only as needed to provide and support the service.</li>
+  <li><strong>At your direction</strong> — any additional recipients or systems you designate as document destinations.</li>
+  <li><strong>Legal and safety</strong> — where reasonably necessary to comply with law, respond to valid requests from public authorities, enforce our terms, or protect the rights, property, or safety of VShip, our users, or others.</li>
+  <li><strong>Business transfers</strong> — in connection with a merger, acquisition, or asset sale, with notice to you.</li>
+</ul>
+<p>Your personal information will not be disclosed to anyone outside VShip except as described above or as permitted or required under applicable law, and, where necessary, subject to written assurances that the recipient will protect the data with adequate security measures.</p>
+
+<h2>5. Transfer and protection of your personal data</h2>
+<p>Where a transfer of personal data from the EEA, UK, or Switzerland is restricted under applicable law, we rely on the European Commission’s Standard Contractual Clauses (the “SCCs”), and for the UK the UK International Data Transfer Addendum (and Swiss equivalents). We apply the SCC module appropriate to each transfer — the controller-to-controller module (Module One) for transfers to an independent controller, and the controller-to-processor module (Module Two) for transfers to a service provider acting on our behalf. The applicable SCCs, as published by the European Commission and in force from time to time, are incorporated into this Privacy Policy by reference and form part of our data-transfer arrangements, with supplementary measures where appropriate. You may request a copy using the contact details in Section 11.</p>
+
+<h2>6. Security measures</h2>
+<p>We use commercially reasonable technical and organizational measures, including encryption in transit (TLS 1.2 or higher), role-based access controls, password-complexity requirements, and security logging and monitoring, and we evaluate these measures on an ongoing basis. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
+
+<h2>7. Personal data retention</h2>
+<p>We keep personal information only as long as necessary for the purposes described in this policy, then delete or anonymize it, unless we are required or entitled under applicable law to retain it longer.</p>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Retention</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Account information</td>
+      <td>Duration of the account relationship, plus up to 24 months after closure</td>
+    </tr>
+    <tr>
+      <td>Uploaded documents and files</td>
+      <td>[OPEN — confirm with VShip] Retained to provide and deliver the service; deleted or anonymized within [X days/months] after delivery or when no longer needed for processing, support, or a legal requirement</td>
+    </tr>
+    <tr>
+      <td>Usage data and server logs</td>
+      <td>Up to 24 months for security, troubleshooting, and improvement</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>We may retain personal data longer where required by law, to establish or defend legal claims, or where residual copies persist in routine encrypted backups (which are not restored except for security, disaster recovery, or legal compliance).</p>
+
+<h2>8. Your data protection rights</h2>
+<p><strong>Device permissions.</strong> You can enable or disable camera and photo-library access at any time in your device settings. Disabling them may limit certain features.</p>
+<p><strong>EEA / UK / Switzerland (GDPR).</strong> Subject to the conditions and exceptions in applicable law, you have the right to request access to your personal information; request rectification of inaccurate or incomplete information; request erasure; object to or request restriction of processing; request portability of information you provided to us, in a structured, commonly used, machine-readable format; withdraw consent at any time (without affecting processing already carried out); and lodge a complaint with your local supervisory authority. We respond within 30 days or as the law requires.</p>
+<p>These rights are subject to exemptions and may not all be available depending on where you are based — for example, where other law requires us to retain the data. We evaluate each request carefully and explain our reasons where we cannot act.</p>
+
+<h2>9. California privacy rights (CCPA/CPRA)</h2>
+<p>This section applies to California residents and supplements the rest of this policy. It is provided under the California Consumer Privacy Act, as amended by the California Privacy Rights Act (together, the “CCPA/CPRA”).</p>
+<h3>Categories of personal information we collect</h3>
+<p>In the preceding 12 months, we have collected the following statutory categories of personal information (Cal. Civ. Code § 1798.140(v)(1)). We do not collect categories that are not listed below.</p>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Statutory category (Cal. Civ. Code § 1798.140(v)(1))</th>
+      <th>Examples collected by VShip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>(A) Identifiers</td>
+      <td>Full name, email address, phone number, company name, device identifiers, IP address</td>
+    </tr>
+    <tr>
+      <td>(B) Customer records (§ 1798.80(e))</td>
+      <td>Name, phone number, company name</td>
+    </tr>
+    <tr>
+      <td>(H) Sensory / visual information</td>
+      <td>Photographs and document images you upload through the camera or photo library</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p><strong>Sensitive personal information.</strong> We do not request sensitive personal information. However, a document you upload may itself contain an identification number (for example, a driver’s license number shown on a vehicle title). Where that occurs, we collect that information only as an incidental part of the document and use it solely to provide the service you request — not to infer characteristics about you. Consistent with Cal. Civ. Code § 1798.140(ae), we use such information only for purposes permitted under the CCPA/CPRA, and you may exercise the right to limit its use and disclosure as described below.</p>
+<h3>Sources, purposes, and disclosures</h3>
+<p>We collect personal information directly from you (account registration, submissions, and communications), automatically from your device when you use the App, and from your device camera or photo library when you grant permission. We use each category for the business purposes in Section 3.</p>
+<p><strong>Categories disclosed for a business purpose.</strong> In the preceding 12 months, we disclosed the following categories of personal information to service providers and contractors for the business purposes described in Section 3: identifiers and customer-records information (to our cloud hosting/storage and email-delivery providers and our documentation team); and sensory/visual information — the documents and images you upload (to our cloud hosting/storage provider and our documentation team). These disclosures are made under contracts that meet CCPA/CPRA requirements. We do not sell or share personal information (as “sell” and “share” are defined under the CCPA/CPRA), and we have not sold or shared personal information in the preceding 12 months.</p>
+<h3>Your rights and how to exercise them</h3>
+<p>California residents have the right to know, access, and obtain a copy of the personal information we hold; to request correction of inaccurate information; to request deletion; to limit the use and disclosure of sensitive personal information; to opt out of any future sale or sharing; and not to receive discriminatory treatment for exercising these rights.</p>
+<p>Submit a request using the methods in Section 11. We will verify your identity using information associated with your account. You may make a verifiable request up to twice in a 12-month period, and we will respond within 45 days (extendable by up to another 45 days with notice). An authorized agent may submit a request on your behalf with proof of authorization.</p>
+<p>Because we may retain some personal information for longer than 12 months, you may also request access to personal information we collected about you before the 12-month period preceding your request (going back to January 1, 2022). When you submit a request to know, you may specify a date range or ask for all personal information we hold about you.</p>
+
+<h2>10. Age requirement</h2>
+<p>The App is a business tool intended only for users 18 or older, and is not directed to children. We do not knowingly collect personal information from anyone under 18. If you believe a minor has provided us data, contact us and we will delete it and close any associated account.</p>
+
+<h2>11. Contact us and changes to this policy</h2>
+<p>We may update this policy from time to time. We will post the updated version, revise the “Last updated” date, and — for material changes — notify you by email or a prominent in-app notice before the change takes effect.</p>
+<p>If you have questions about this policy, wish to exercise your rights, or want a copy of our data-transfer mechanisms, contact us:</p>
+<ul>
+  <li><strong>Email:</strong> <a href="mailto:admin@vship2000.com">admin@vship2000.com</a></li>
+  <li><strong>Phone:</strong> +1 (718) 706-8566</li>
+  <li><strong>Mail:</strong> VShip, 3636 33rd Street, Astoria, NY 11106, United States</li>
+</ul>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="./index_files/VShip-logo-1024px-transparent.png" onerror="this.style.display='none'" alt="VShip Logo" style="display: none;">
+      <p>VShip Co — the trade name of KOIL INC — is a U.S. Federal Maritime Commission licensed Non-Vessel Operating Common Carrier (NVOCC) and Ocean Transportation Intermediary (OTI) specializing in used vehicle exports to West Africa.</p>
+      <p class="fmc-note">📋 FMC Licensed NVOCC / OTI &nbsp;|&nbsp; CBP Compliant &nbsp;|&nbsp; COGSA Governed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="./index.html#services">Services</a></li>
+        <li><a href="./index.html#carriers">Carriers</a></li>
+        <li><a href="./index.html#destinations">Destinations</a></li>
+        <li><a href="./index.html#bol">Bill of Lading Terms</a></li>
+        <li><a href="./index.html#regulations">Regulations</a></li>
+        <li><a href="./index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Carriers</h4>
+      <ul>
+        <li><a href="https://www.msc.com/en/track-a-shipment" target="_blank">MSC Tracking</a></li>
+        <li><a href="https://www.cma-cgm.com/" target="_blank">CMA CGM Tracking</a></li>
+        <li><a href="https://www.maersk.com/tracking/" target="_blank">Maersk Tracking</a></li>
+        <li><a href="https://www.grimaldi-lines.com/" target="_blank">Grimaldi Lines</a></li>
+        <li><a href="http://rates.descartes.com/" target="_blank">Tariff Rates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Regulation Links</h4>
+      <ul>
+        <li><a href="https://www.cbp.gov/" target="_blank">CBP</a></li>
+        <li><a href="https://www.fmc.gov/" target="_blank">FMC</a></li>
+        <li><a href="https://www.dot.gov/" target="_blank">DOT</a></li>
+        <li><a href="https://www.export.gov/" target="_blank">Export.gov</a></li>
+        <li><a href="https://aesdirect.census.gov/" target="_blank">AES Direct</a></li>
+        <li><a href="https://www.xe.com/ucc" target="_blank">Currency Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>VShip Documents Upload App</h4>
+      <ul>
+        <li><a href="./Privacy Policy.html">App Privacy Policy</a></li>
+        <li><a href="./Terms and Conditions.html">App Terms of Service</a></li>
+        <li><a href="./Account Deletion.html">Account Deletion</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2000–2026 VShip Co · KOIL INC · All Rights Reserved · 36-36 33rd St, Ste 405, Long Island City, NY 11106</p>
+    <div class="footer-bottom-links">
+      <a href="#" onclick="openModal('terms');return false;">Terms of Service</a>
+      <a href="#" onclick="openModal('privacy');return false;">Privacy Policy</a>
+      <a href="./index.html#bol">Bill of Lading Terms</a>
+      <a href="./index.html#regulations">Regulations</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: Terms of Service -->
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Terms of Service</h2>
+      <button class="modal-close" onclick="closeModal('terms')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Acceptance of Terms</h3>
+      <p>By using the services of VShip Co (KOIL INC), you agree to be bound by these Terms of Service and all applicable federal regulations governing ocean transportation, including those administered by the U.S. Federal Maritime Commission (FMC) and U.S. Customs and Border Protection (CBP).</p>
+      <h3>Services Description</h3>
+      <p>VShip Co acts as a licensed NVOCC/OTI arranging ocean freight transportation. We issue House Bills of Lading governed by COGSA (46 U.S.C. §§1300–1315) and FMC-published tariffs. VShip Co is not a vessel operator and arranges carriage through VOCs.</p>
+      <h3>Shipper Obligations</h3>
+      <p>The Shipper warrants the accuracy of all commodity descriptions, vehicle identification numbers (VINs), weights, and export documentation, including original vehicle titles cleared with CBP. The Shipper is responsible for compliance with all U.S. export control laws and the Foreign Trade Regulations (15 CFR Part 30).</p>
+      <h3>Liability</h3>
+      <p>Carrier liability is governed by COGSA and limited to US$500 per package unless a higher value is declared in writing and additional freight is paid. VShip Co is not liable for consequential or special damages under any circumstances.</p>
+      <h3>Governing Law</h3>
+      <p>These Terms are governed by the laws of the State of New York. Disputes shall be resolved in the U.S. District Court, Southern District of New York. Suit must be filed within one (1) year of the date of delivery or scheduled delivery.</p>
+      <h3>Tariff</h3>
+      <p>All charges are subject to VShip Co's FMC-published tariff available at <a href="http://rates.descartes.com/" target="_blank" style="color:var(--blue);">rates.descartes.com</a>. Negotiated Rate Arrangements (NRAs) may be entered separately.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Privacy Policy -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2>Privacy Policy</h2>
+      <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Information We Collect</h3>
+      <p>VShip Co collects personal and business information necessary to arrange ocean freight transportation, including names, addresses, phone numbers, email addresses, vehicle identification numbers (VINs), and export documentation as required by U.S. CBP and FMC regulations.</p>
+      <h3>Use of Information</h3>
+      <p>Information collected is used solely to arrange transportation, comply with federal export and customs requirements (including AES/EEI filing), issue Bills of Lading, and communicate with shippers and consignees regarding their shipments. We do not sell personal information to third parties.</p>
+      <h3>Regulatory Disclosure</h3>
+      <p>We are required by U.S. law to transmit shipper and consignee information to U.S. Customs and Border Protection (CBP) prior to vessel loading, as mandated under the CBP AMS (Automated Manifest System) and AES Direct (Electronic Export Information) programs.</p>
+      <h3>Data Retention</h3>
+      <p>Shipping and transaction records are retained for a minimum of five (5) years in accordance with FMC regulations and standard industry practice.</p>
+      <h3>Security</h3>
+      <p>VShip Co uses commercially reasonable measures to protect your data. However, no data transmission over the internet is 100% secure. Please contact us by phone for highly sensitive information.</p>
+      <h3>Contact</h3>
+      <p>For privacy questions, contact us at <a href="mailto:Bindu@vship2000.com" style="color:var(--blue);">Bindu@vship2000.com</a> or by phone at 718-706-8566.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal open/close — mirrors index.html
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('load', function() {
+    // Close modals when clicking backdrop
+    var modals = document.getElementsByClassName('modal-overlay');
+    for (var i = 0; i < modals.length; i++) {
+      modals[i].addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
