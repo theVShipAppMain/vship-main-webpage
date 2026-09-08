@@ -434,6 +434,9 @@
     margin-top: .7rem; font-size: .85rem; color: green;
     text-align: center; display: none;
   }
+  /* Freight Quote fields are toggled by JS via the hidden attribute */
+  .freight-fields[hidden] { display: none; }
+  #contact-form-container .form-fallback { font-size: .9rem; color: var(--muted); }
 
   /* ── FOOTER ──────────────────────────────── */
   footer { background: var(--navy); color: rgba(255,255,255,.65); }
@@ -1032,46 +1035,8 @@
       </div>
       <div class="contact-form">
         <h3>Send Us a Message</h3>
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" id="cf-fname" name="first-name" placeholder="John">
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" id="cf-lname" name="last-name" placeholder="Doe">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" id="cf-email" name="email" placeholder="you@email.com">
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" id="cf-phone" name="phone" placeholder="+1 (555) 000-0000">
-        </div>
-        <div class="form-group">
-          <label>Subject</label>
-          <select id="cf-subject" name="subject">
-            <option value="">— Select —</option>
-            <option>Freight Quote Request</option>
-            <option>Vehicle Export Inquiry</option>
-            <option>Bill of Lading Question</option>
-            <option>Shipment Tracking</option>
-            <option>Customs / CBP Question</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea id="cf-msg" name="message" placeholder="Describe your shipment, origin, destination, and vehicle details..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Send Message</button>
-        <p id="form-msg">✅ Thank you! We will respond within 1 business day.</p>
-        </form>
+        <!-- Form markup lives in contact-form.html and is loaded here by the script at the bottom of this page -->
+        <div id="contact-form-container"></div>
       </div>
     </div>
   </div>
@@ -1234,38 +1199,77 @@
       }
     }
   };
-  // Contact form submit — posts to Netlify Forms via AJAX so the page doesn't reload
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var form  = this;
-    var fname = document.getElementById('cf-fname').value.trim();
-    var email = document.getElementById('cf-email').value.trim();
-    var msg   = document.getElementById('cf-msg').value.trim();
-    if (!fname || !email || !msg) {
-      alert('Please fill in your name, email, and message.');
-      return;
+  // ── Contact form ─────────────────────────────────────────────────────────
+  // The form markup lives in contact-form.html so it can be edited on its own.
+  // Netlify Forms still detects it because contact-form.html is deployed as a
+  // static HTML file; the AJAX POST below only needs the matching form-name.
+  function initContactForm(form) {
+    var subject       = form.querySelector('#cf-subject');
+    var freightFields = form.querySelector('#cf-freight-fields');
+    var freightInputs = freightFields.querySelectorAll('input, select');
+
+    // Show Origin / Destination / Container Size / Commodity only for freight quotes.
+    // Hidden fields are disabled so they are left out of the submission.
+    function toggleFreightFields() {
+      var show = subject.value === 'Freight Quote Request';
+      freightFields.hidden = !show;
+      for (var i = 0; i < freightInputs.length; i++) {
+        freightInputs[i].disabled = !show;
+      }
     }
-    var btn = form.querySelector('.btn-submit');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-    .then(function(res) {
-      if (!res.ok) throw new Error('Submission failed');
-      document.getElementById('form-msg').style.display = 'block';
-      form.reset();
-    })
-    .catch(function() {
-      alert('Sorry, your message could not be sent. Please try again or email us directly at Bindu@vship2000.com.');
-    })
-    .then(function() {
-      btn.disabled = false;
-      btn.textContent = 'Send Message';
+    subject.addEventListener('change', toggleFreightFields);
+    toggleFreightFields();
+
+    // Submit — posts to Netlify Forms via AJAX so the page doesn't reload
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var fname = form.querySelector('#cf-fname').value.trim();
+      var email = form.querySelector('#cf-email').value.trim();
+      var msg   = form.querySelector('#cf-msg').value.trim();
+      if (!fname || !email || !msg) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+      var btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Submission failed');
+        form.querySelector('#form-msg').style.display = 'block';
+        form.reset();
+        toggleFreightFields();
+      })
+      .catch(function() {
+        alert('Sorry, your message could not be sent. Please try again or email us directly at Bindu@vship2000.com.');
+      })
+      .then(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      });
     });
-  });
+  }
+
+  (function loadContactForm() {
+    var container = document.getElementById('contact-form-container');
+    fetch('contact-form.html')
+      .then(function(res) {
+        if (!res.ok) throw new Error('Could not load contact form');
+        return res.text();
+      })
+      .then(function(html) {
+        container.innerHTML = html;
+        initContactForm(document.getElementById('contact-form'));
+      })
+      .catch(function() {
+        container.innerHTML = '<p class="form-fallback">The contact form could not be loaded. ' +
+          'Please email us directly at <a href="mailto:Bindu@vship2000.com">Bindu@vship2000.com</a>.</p>';
+      });
+  })();
 </script>
 
 
