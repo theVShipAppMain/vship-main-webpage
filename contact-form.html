@@ -1,0 +1,85 @@
+<!--
+  Contact form partial — loaded into index.html (#contact-form-container) via fetch().
+
+  Netlify Forms: this file is deployed as a static HTML file, so Netlify's build
+  bot parses it and registers the "contact" form and every field below. Keep the
+  form name, the hidden form-name input, and all field names in sync with any
+  JavaScript that submits the form. The Freight Quote fields stay in the markup
+  (hidden until "Freight Quote Request" is selected) so Netlify records them.
+-->
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+  <input type="hidden" name="form-name" value="contact">
+  <p style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="cf-fname">First Name</label>
+      <input type="text" id="cf-fname" name="first-name" placeholder="John">
+    </div>
+    <div class="form-group">
+      <label for="cf-lname">Last Name</label>
+      <input type="text" id="cf-lname" name="last-name" placeholder="Doe">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="cf-email">Email Address</label>
+    <input type="email" id="cf-email" name="email" placeholder="you@email.com">
+  </div>
+  <div class="form-group">
+    <label for="cf-phone">Phone Number</label>
+    <input type="tel" id="cf-phone" name="phone" placeholder="+1 (555) 000-0000">
+  </div>
+  <div class="form-group">
+    <label for="cf-subject">Subject</label>
+    <select id="cf-subject" name="subject">
+      <option value="">— Select —</option>
+      <option>Freight Quote Request</option>
+      <option>Vehicle Export Inquiry</option>
+      <option>Bill of Lading Question</option>
+      <option>Shipment Tracking</option>
+      <option>Customs / CBP Question</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <!-- Shown only when Subject is "Freight Quote Request" -->
+  <div id="cf-freight-fields" class="freight-fields" hidden>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cf-origin">Origin</label>
+        <input type="text" id="cf-origin" name="origin" placeholder="City, State or Port">
+      </div>
+      <div class="form-group">
+        <label for="cf-destination">Destination</label>
+        <input type="text" id="cf-destination" name="destination" placeholder="Destination Port">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cf-container-size">Container Size</label>
+        <select id="cf-container-size" name="container-size">
+          <option value="">— Select —</option>
+          <option>20' Standard</option>
+          <option>40' Standard</option>
+          <option>40' High Cube</option>
+          <option>45' High Cube</option>
+          <option>20' Open Top</option>
+          <option>40' Open Top</option>
+          <option>40' Standard Flat Rack</option>
+          <option>40' High Cube Flat Rack</option>
+          <option>40' High Cube Open Top</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cf-commodity">Commodity</label>
+        <input type="text" id="cf-commodity" name="commodity" placeholder="e.g. Household goods, vehicles">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cf-msg">Message</label>
+    <textarea id="cf-msg" name="message" placeholder="Describe your shipment, origin, destination, and vehicle details..."></textarea>
+  </div>
+  <button type="submit" class="btn-submit">Send Message</button>
+  <p id="form-msg">✅ Thank you! We will respond within 1 business day.</p>
+</form>
